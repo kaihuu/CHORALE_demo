@@ -129,6 +129,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Behaviors\WebBrowserBehavior.cs" />
+    <Compile Include="Daos\SemanticLinkDao.cs" />
     <Compile Include="Models\EcologModels\Link.cs" />
     <Compile Include="Models\EcologModels\SemanticLink.cs" />
     <Compile Include="Models\MapModels\MapHost.cs" />
@@ -198,7 +199,6 @@
     <Content Include="Resources\map.js" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Daos\" />
     <Folder Include="ViewModels\PageViewModels\" />
     <Folder Include="Views\Pages\" />
   </ItemGroup>
