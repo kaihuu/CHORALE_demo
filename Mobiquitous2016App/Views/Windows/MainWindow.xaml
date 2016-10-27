@@ -35,21 +35,21 @@
 
     <Grid>
 
-        <chart:SfSurfaceChart ItemsSource="{Binding DataValues}"
+        <chart:SfSurfaceChart ApplyGradientBrush="True"
+                              ColumnSize="10"
+                              EnableRotation="True"
+                              EnableZooming="True"
+                              ItemsSource="{Binding DataValues}"
+                              Palette="Custom"
+                              Rotate="45"
+                              RowSize="10"
+                              ShowBackWall="False"
+                              ShowLeftWall="False"
+                              Tilt="45"
                               Type="Surface"
                               XBindingPath="X"
                               YBindingPath="Y"
-                              ZBindingPath="Z"
-                              RowSize="10"
-                              ColumnSize="10"
-                              Rotate="45"
-                              Tilt="45"
-                              ShowBackWall="False"
-                              ShowLeftWall="False"
-                              Palette="Custom"
-                              ApplyGradientBrush="True"
-                              EnableRotation="True"
-                              EnableZooming="True">
+                              ZBindingPath="Z">
 
             <chart:SfSurfaceChart.ColorModel>
 
@@ -57,15 +57,15 @@
 
                     <chart:ChartColorModel.CustomBrushes>
 
-                        <SolidColorBrush Color="Blue"/>
-                        <SolidColorBrush Color="#FF1E66FF"/>
-                        <SolidColorBrush Color="#FF00AEFF"/>
-                        <SolidColorBrush Color="Cyan"/>
-                        <SolidColorBrush Color="#FF00FF8B"/>
-                        <SolidColorBrush Color="#FF23FF00"/>
-                        <SolidColorBrush Color="#FFB9FF00"/>
-                        <SolidColorBrush Color="#FFFF9700"/>
-                        <SolidColorBrush Color="Red"/>
+                        <SolidColorBrush Color="Blue" />
+                        <SolidColorBrush Color="#FF1E66FF" />
+                        <SolidColorBrush Color="#FF00AEFF" />
+                        <SolidColorBrush Color="Cyan" />
+                        <SolidColorBrush Color="#FF00FF8B" />
+                        <SolidColorBrush Color="#FF23FF00" />
+                        <SolidColorBrush Color="#FFB9FF00" />
+                        <SolidColorBrush Color="#FFFF9700" />
+                        <SolidColorBrush Color="Red" />
 
                     </chart:ChartColorModel.CustomBrushes>
 
@@ -75,22 +75,19 @@
 
             <chart:SfSurfaceChart.XAxis>
 
-                <chart:SurfaceAxis Header="X-Axis"
-                                   LabelFormat="0"/>
+                <chart:SurfaceAxis Header="X-Axis" LabelFormat="0" />
 
             </chart:SfSurfaceChart.XAxis>
 
             <chart:SfSurfaceChart.YAxis>
 
-                <chart:SurfaceAxis Header="Y-Axis"
-                                   LabelFormat="0" />
+                <chart:SurfaceAxis Header="Y-Axis" LabelFormat="0" />
 
             </chart:SfSurfaceChart.YAxis>
 
             <chart:SfSurfaceChart.ZAxis>
 
-                <chart:SurfaceAxis Header="Z-Axis"
-                                   LabelFormat="0.00"/>
+                <chart:SurfaceAxis Header="Z-Axis" LabelFormat="0.00" />
 
             </chart:SfSurfaceChart.ZAxis>
 
