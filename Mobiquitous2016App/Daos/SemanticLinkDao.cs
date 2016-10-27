@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,13 +19,12 @@ namespace Mobiquitous2016App.Daos
             using (var connection = new SqlConnection(DatabaseConnection.ConnectionString))
             {
                 connection.Open();
-                FluentMapper.Initialize(config => config.AddMap(new SemanticLinkMap()));
-
+                
                 var query = new StringBuilder();
                 query.AppendLine("SELECT");
                 query.AppendLine("  DISTINCT semantic_link_id,");
-                query.AppendLine("  driber_id,");
-                query.AppendLine("  semantics,");
+                query.AppendLine("  driver_id,");
+                query.AppendLine("  semantics");
                 query.AppendLine("FROM semantic_links");
                 query.AppendLine("WHERE (semantic_link_id >= 187");
                 query.AppendLine("  AND semantic_link_id <= 196)");
@@ -38,7 +38,12 @@ namespace Mobiquitous2016App.Daos
                 query.AppendLine("  OR semantic_link_id = 19");
                 query.AppendLine("ORDER BY semantic_link_id");
 
-                return connection.Query<SemanticLink>(query.ToString()).ToList();
+                var list = connection.Query<SemanticLink>(query.ToString()).ToList();
+                list.ForEach(s => s.Links = LinkDao.GetLinksOfSemanticLink(s));
+
+                list.ForEach(s => Debug.WriteLine($"Links.Count: {s.SemanticLinkId}"));
+
+                return list;
             }
         }
 
@@ -47,19 +52,21 @@ namespace Mobiquitous2016App.Daos
             using (var connection = new SqlConnection(DatabaseConnection.ConnectionString))
             {
                 connection.Open();
-                FluentMapper.Initialize(config => config.AddMap(new SemanticLinkMap()));
-
+                
                 var query = new StringBuilder();
                 query.AppendLine("SELECT");
                 query.AppendLine("  DISTINCT semantic_link_id,");
                 query.AppendLine("  driber_id,");
-                query.AppendLine("  semantics,");
+                query.AppendLine("  semantics");
                 query.AppendLine("FROM semantic_links");
                 query.AppendLine("WHERE (semantic_link_id >= 202");
                 query.AppendLine("  AND semantic_link_id <= 218)");
                 query.AppendLine("  OR semantic_link_id = 155");
 
-                return connection.Query<SemanticLink>(query.ToString()).ToList();
+                var list = connection.Query<SemanticLink>(query.ToString()).ToList();
+                list.ForEach(s => s.Links = LinkDao.GetLinksOfSemanticLink(s));
+
+                return list;
             }
         }
     }

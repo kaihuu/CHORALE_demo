@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MahApps.Metro.Controls;
+using Mobiquitous2016App.ViewModels.WindowViewModels;
 
 namespace Mobiquitous2016App.Views.Windows
 {
@@ -31,6 +32,14 @@ namespace Mobiquitous2016App.Views.Windows
         public MapWindow()
         {
             InitializeComponent();
+
+            var context = DataContext as MapWindowViewModel;
+            if (context != null) context.InvokeScript = InvokeScript;
+        }
+
+        public  void InvokeScript(string scriptName, params object[] args)
+        {
+            WebBrowser.InvokeScript(scriptName, args);
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.ComponentModel;
 using System.Threading.Tasks;
+using Dapper.FluentMap;
 using Livet;
 using Livet.Commands;
 using Livet.Messaging;
@@ -14,15 +15,16 @@ using Livet.Messaging.Windows;
 using Mobiquitous2016App.Models;
 using Mobiquitous2016App.Models.EcologModels;
 using Mobiquitous2016App.Models.MapModels;
+using Mobiquitous2016App.ObjectRelationalMaps;
 
 namespace Mobiquitous2016App.ViewModels.WindowViewModels
 {
     public class MapWindowViewModel : ViewModel
     {
         #region SemanticLinks変更通知プロパティ
-        private List<SemanticLink> _SemanticLinks;
+        private IList<SemanticLink> _SemanticLinks;
 
-        public List<SemanticLink> SemanticLinks
+        public IList<SemanticLink> SemanticLinks
         {
             get
             { return _SemanticLinks; }
@@ -36,38 +38,28 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
         }
         #endregion
 
-        public delegate void InvokeScript(string scriptName, params object[] args);
+        public delegate void InvokeScriptDelegate(string scriptName, params object[] args);
         public MapHost MapHost { get; private set; }
         public string Uri { get; set; }
-        private readonly InvokeScript _invokeScript;
+        public InvokeScriptDelegate InvokeScript { get; set; }
 
-        public MapWindowViewModel(InvokeScript invokeScript)
+        public void Initialize()
         {
-            _invokeScript = invokeScript;
-        }
+            FluentMapper.Initialize(config =>
+            {
+                config.AddMap(new SemanticLinkMap());
+                config.AddMap(new LinkMap());
+            });
 
-        public async void Initialize()
-        {
+            SemanticLinks = SemanticLink.OutwardSemanticLinks;
+
             Uri = $"file://{AppDomain.CurrentDomain.BaseDirectory}Resources\\index.html";
             MapHost = new MapHost()
             {
                 MapWindowViewModel = this
             };
 
-            await Task.Run(() =>
-            {
-                SetLinks();
-            });
-
             DrawSemanticLinkLines();
-        }
-
-        public void SetLinks()
-        {
-            foreach (SemanticLink semanticLink in SemanticLinks)
-            {
-                semanticLink.SetLinks();
-            }
         }
 
         public void DrawSemanticLinkLines()
@@ -76,13 +68,13 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
             {
                 for (int i = 0; i < semanticLink.Links.Count - 1; i++)
                 {
-                    _invokeScript("addCircle",
+                    InvokeScript("addCircle",
                         semanticLink.Links[i].Latitude,
                         semanticLink.Links[i].Longitude);
 
                     if (semanticLink.Links[i].LinkId.Equals(semanticLink.Links[i + 1].LinkId))
 
-                        _invokeScript("addLine",
+                        InvokeScript("addLine",
                             semanticLink.SemanticLinkId,
                             semanticLink.Links[i].Latitude,
                             semanticLink.Links[i].Longitude,
@@ -91,7 +83,7 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
                 }
             }
 
-            _invokeScript("moveMap", SemanticLinks.Average(v => v.Links.Average(l => l.Latitude)), SemanticLinks.Average(v => v.Links.Average(l => l.Longitude)));
+            InvokeScript("moveMap", SemanticLinks.Average(v => v.Links.Average(l => l.Latitude)), SemanticLinks.Average(v => v.Links.Average(l => l.Longitude)));
         }
     }
 }

@@ -19,8 +19,7 @@ namespace Mobiquitous2016App.Daos
             using (var connection = new SqlConnection(DatabaseConnection.ConnectionString))
             {
                 connection.Open();
-                FluentMapper.Initialize(config => config.AddMap(new LinkMap()));
-
+                
                 var query = new StringBuilder();
                 query.AppendLine("SELECT links.*");
                 query.AppendLine("FROM semantic_links");
