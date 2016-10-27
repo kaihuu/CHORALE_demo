@@ -39,7 +39,7 @@ namespace Mobiquitous2016App.Views.Windows
 
         public  void InvokeScript(string scriptName, params object[] args)
         {
-            WebBrowser.InvokeScript(scriptName, args);
+            //WebBrowser.InvokeScript(scriptName, args);
         }
     }
 }

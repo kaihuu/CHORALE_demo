@@ -41,8 +41,6 @@ namespace Mobiquitous2016App.Daos
                 var list = connection.Query<SemanticLink>(query.ToString()).ToList();
                 list.ForEach(s => s.Links = LinkDao.GetLinksOfSemanticLink(s));
 
-                list.ForEach(s => Debug.WriteLine($"Links.Count: {s.SemanticLinkId}"));
-
                 return list;
             }
         }

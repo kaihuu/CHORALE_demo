@@ -47,8 +47,8 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
         {
             FluentMapper.Initialize(config =>
             {
-                config.AddMap(new SemanticLinkMap());
                 config.AddMap(new LinkMap());
+                config.AddMap(new SemanticLinkMap());
             });
 
             SemanticLinks = SemanticLink.OutwardSemanticLinks;
@@ -64,7 +64,7 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
 
         public void DrawSemanticLinkLines()
         {
-            foreach (SemanticLink semanticLink in SemanticLinks)
+            foreach (var semanticLink in SemanticLinks)
             {
                 for (int i = 0; i < semanticLink.Links.Count - 1; i++)
                 {

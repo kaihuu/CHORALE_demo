@@ -12,8 +12,9 @@ namespace Mobiquitous2016App.ObjectRelationalMaps
     {
         public LinkMap()
         {
-            Map(p => p.LinkId).ToColumn("link_id");
-            Map(p => p.NodeId).ToColumn("node_id");
+            Map(p => p.LinkId).ToColumn("link_id", false);
+            Map(p => p.NodeId).ToColumn("node_id", false);
+            Map(p => p.Direction).ToColumn("direction", false);
         }
     }
 }

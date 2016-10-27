@@ -15,7 +15,7 @@ namespace Mobiquitous2016App.ObjectRelationalMaps
         {
             Map(p => p.SemanticLinkId).ToColumn("semantic_link_id");
             Map(p => p.DriverId).ToColumn("driver_id");
-            Map(p => p.Semantics).ToColumn("semantics");
+            Map(p => p.Semantics).ToColumn("semantics", false);
         }
     }
 }
