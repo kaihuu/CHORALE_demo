@@ -16,7 +16,7 @@ namespace Mobiquitous2016App.Models.MapModels
 
         public void OnInitCompleted()
         {
-            //this.MainMapPageViewModel.SetSemanticLine();
+            MapWindowViewModel.DrawSemanticLinkLines();
         }
 
         public void OnLineClicked(int semanticLinkId)

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ComponentModel;
+using System.Diagnostics;
+using System.IO;
 using System.Threading.Tasks;
 using Dapper.FluentMap;
 using Livet;
@@ -39,8 +41,41 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
         #endregion
 
         public delegate void InvokeScriptDelegate(string scriptName, params object[] args);
-        public MapHost MapHost { get; private set; }
-        public string Uri { get; set; }
+
+        #region MapHost変更通知プロパティ
+        private MapHost _MapHost;
+
+        public MapHost MapHost
+        {
+            get
+            { return _MapHost; }
+            set
+            { 
+                if (_MapHost == value)
+                    return;
+                _MapHost = value;
+                RaisePropertyChanged();
+            }
+        }
+        #endregion
+
+        #region Uri変更通知プロパティ
+        private string _Uri;
+
+        public string Uri
+        {
+            get
+            { return _Uri; }
+            set
+            { 
+                if (_Uri == value)
+                    return;
+                _Uri = value;
+                RaisePropertyChanged();
+            }
+        }
+        #endregion
+
         public InvokeScriptDelegate InvokeScript { get; set; }
 
         public void Initialize()
@@ -53,13 +88,12 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
 
             SemanticLinks = SemanticLink.OutwardSemanticLinks;
 
-            Uri = $"file://{AppDomain.CurrentDomain.BaseDirectory}Resources\\index.html";
+            Uri = $"{AppDomain.CurrentDomain.BaseDirectory}Resources\\index.html";
+
             MapHost = new MapHost()
             {
                 MapWindowViewModel = this
             };
-
-            DrawSemanticLinkLines();
         }
 
         public void DrawSemanticLinkLines()
