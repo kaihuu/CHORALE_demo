@@ -129,6 +129,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Behaviors\WebBrowserBehavior.cs" />
+    <Compile Include="Models\MapModels\MapHost.cs" />
     <Compile Include="ViewModels\WindowViewModels\MapWindowViewModel.cs" />
     <Compile Include="Views\Windows\MapWindow.xaml.cs">
       <DependentUpon>MapWindow.xaml</DependentUpon>
@@ -195,6 +196,7 @@
     <Content Include="Resources\map.js" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Models\EcologModels\" />
     <Folder Include="ViewModels\PageViewModels\" />
     <Folder Include="Views\Pages\" />
   </ItemGroup>
