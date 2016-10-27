@@ -129,6 +129,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Behaviors\WebBrowserBehavior.cs" />
+    <Compile Include="Daos\DatabaseConnection.cs" />
     <Compile Include="Daos\SemanticLinkDao.cs" />
     <Compile Include="Models\EcologModels\Link.cs" />
     <Compile Include="Models\EcologModels\SemanticLink.cs" />
