@@ -1,0 +1,67 @@
+﻿<controls:MetroWindow x:Class="Mobiquitous2016App.Views.Windows.MapWindow"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+                      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+                      xmlns:l="http://schemas.livet-mvvm.net/2011/wpf"
+                      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+                      xmlns:windowViewModels="clr-namespace:Mobiquitous2016App.ViewModels.WindowViewModels"
+                      xmlns:behaviors="clr-namespace:Mobiquitous2016App.Behaviors"
+                      Title="MapWindow"
+                      Width="800"
+                      Height="600">
+
+    <Window.DataContext>
+        <windowViewModels:MapWindowViewModel />
+    </Window.DataContext>
+
+    <i:Interaction.Triggers>
+
+        <!--  Viewに特別な要件が存在しない限りは、トリガーやアクションの自作にこだわらず積極的にコードビハインドを使いましょう  -->
+        <!--  Viewのコードビハインドは、基本的にView内で完結するロジックとViewModelからのイベントの受信(専用リスナを使用する)に限るとトラブルが少なくなります  -->
+        <!--  Livet1.1からはコードビハインドでViewModelのイベントを受信するためのWeakEventLisnterサポートが追加されています  -->
+
+        <!--  WindowのContentRenderedイベントのタイミングでViewModelのInitializeメソッドが呼ばれます  -->
+        <i:EventTrigger EventName="ContentRendered">
+            <l:LivetCallMethodAction MethodName="Initialize" MethodTarget="{Binding}" />
+        </i:EventTrigger>
+
+        <!--  Windowが閉じたタイミングでViewModelのDisposeメソッドが呼ばれます  -->
+        <i:EventTrigger EventName="Closed">
+            <l:DataContextDisposeAction />
+        </i:EventTrigger>
+
+        <!--  WindowのCloseキャンセル処理に対応する場合は、WindowCloseCancelBehaviorの使用を検討してください  -->
+
+    </i:Interaction.Triggers>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0">
+            <Button Content="Outward"
+                    Margin="10,10,10,0"/>
+            <Button Content="Homeward"
+                    Margin="10,0,10,10"
+                    />
+            
+            <Button Content="CHORALE"
+                    Margin="10,10,10,0"/>
+            <Button Content="ECGs"
+                    Margin="10,0,10,0"/>
+
+        </StackPanel>
+
+        <materialDesign:Card Grid.Column="1" Margin="5">
+
+            <WebBrowser x:Name="WebBrowser"
+                        behaviors:WebBrowserBehavior.ObjectForScripting="{Binding MapHost}"
+                        behaviors:WebBrowserBehavior.Source="{Binding Uri}" />
+            
+        </materialDesign:Card>
+
+    </Grid>
+</controls:MetroWindow>
