@@ -35,6 +35,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.50.2\lib\net45\Dapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Dapper.FluentMap, Version=1.5.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.FluentMap.1.5.1\lib\net40\Dapper.FluentMap.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Dragablz, Version=0.0.3.175, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Dragablz.0.0.3.175\lib\net45\Dragablz.dll</HintPath>
       <Private>True</Private>
@@ -130,10 +138,13 @@
     </ApplicationDefinition>
     <Compile Include="Behaviors\WebBrowserBehavior.cs" />
     <Compile Include="Daos\DatabaseConnection.cs" />
+    <Compile Include="Daos\LinkDao.cs" />
     <Compile Include="Daos\SemanticLinkDao.cs" />
     <Compile Include="Models\EcologModels\Link.cs" />
     <Compile Include="Models\EcologModels\SemanticLink.cs" />
     <Compile Include="Models\MapModels\MapHost.cs" />
+    <Compile Include="ObjectRelationalMaps\LinkMap.cs" />
+    <Compile Include="ObjectRelationalMaps\SemanticLinkMap.cs" />
     <Compile Include="ViewModels\WindowViewModels\MapWindowViewModel.cs" />
     <Compile Include="Views\Windows\MapWindow.xaml.cs">
       <DependentUpon>MapWindow.xaml</DependentUpon>

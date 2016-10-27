@@ -22,5 +22,10 @@ namespace Mobiquitous2016App.Models.EcologModels
         {
             Links = new List<Link>();
         }
+
+        public void SetLinks()
+        {
+            Links = LinkDao.GetLinksOfSemanticLink(this);
+        }
     }
 }

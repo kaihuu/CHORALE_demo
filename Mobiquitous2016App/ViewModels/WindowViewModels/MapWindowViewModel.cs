@@ -48,8 +48,8 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
 
         public async void Initialize()
         {
-            this.Uri = $"file://{AppDomain.CurrentDomain.BaseDirectory}Resources\\index.html";
-            this.MapHost = new MapHost()
+            Uri = $"file://{AppDomain.CurrentDomain.BaseDirectory}Resources\\index.html";
+            MapHost = new MapHost()
             {
                 MapWindowViewModel = this
             };
