@@ -191,6 +191,8 @@
     <Content Include="InfrastructureAssemblies\Livet.XML" />
     <Content Include="InfrastructureAssemblies\Microsoft.Expression.Interactions.dll" />
     <Content Include="InfrastructureAssemblies\System.Windows.Interactivity.dll" />
+    <Content Include="Resources\index.html" />
+    <Content Include="Resources\map.js" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ViewModels\PageViewModels\" />
