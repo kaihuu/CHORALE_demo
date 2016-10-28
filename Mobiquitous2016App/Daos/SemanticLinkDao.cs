@@ -54,7 +54,7 @@ namespace Mobiquitous2016App.Daos
                 var query = new StringBuilder();
                 query.AppendLine("SELECT");
                 query.AppendLine("  DISTINCT semantic_link_id,");
-                query.AppendLine("  driber_id,");
+                query.AppendLine("  driver_id,");
                 query.AppendLine("  semantics");
                 query.AppendLine("FROM semantic_links");
                 query.AppendLine("WHERE (semantic_link_id >= 202");

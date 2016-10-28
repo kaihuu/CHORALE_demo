@@ -14,6 +14,7 @@ google.maps.Marker.prototype.id = -1;
  * マップの初期化を行います。
  */
 function initialize() {
+    isInitialized = false;
     var mapdiv = document.getElementById("map_canvas");
     var myOptions = { zoom: 16, center: new google.maps.LatLng(35.473695, 139.590859), mapTypeId: google.maps.MapTypeId.ROADMAP, scaleControl: true };
     map = new google.maps.Map(mapdiv, myOptions);

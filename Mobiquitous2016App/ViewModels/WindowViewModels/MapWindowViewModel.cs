@@ -13,7 +13,7 @@ using Livet.Messaging;
 using Livet.Messaging.IO;
 using Livet.EventListeners;
 using Livet.Messaging.Windows;
-
+using MaterialDesignThemes.Wpf;
 using Mobiquitous2016App.Models;
 using Mobiquitous2016App.Models.EcologModels;
 using Mobiquitous2016App.Models.MapModels;
@@ -96,6 +96,18 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
             };
         }
 
+        public void SetOutwardSemanticLinks()
+        {
+            SemanticLinks = SemanticLink.OutwardSemanticLinks;
+            InvokeScript("initialize", null);
+        }
+
+        public void SetHomewardSemanticLinks()
+        {
+            SemanticLinks = SemanticLink.HomewardSemanticLinks;
+            InvokeScript("initialize", null);
+        }
+
         public void DrawSemanticLinkLines()
         {
             foreach (var semanticLink in SemanticLinks)
@@ -118,6 +130,11 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
             }
 
             InvokeScript("moveMap", SemanticLinks.Average(v => v.Links.Average(l => l.Latitude)), SemanticLinks.Average(v => v.Links.Average(l => l.Longitude)));
+        }
+
+        public void ShowDialog(int semanticLinkId)
+        {
+            
         }
     }
 }

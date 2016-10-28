@@ -219,6 +219,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ViewModels\PageViewModels\" />
+    <Folder Include="Views\Items\" />
     <Folder Include="Views\Pages\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
