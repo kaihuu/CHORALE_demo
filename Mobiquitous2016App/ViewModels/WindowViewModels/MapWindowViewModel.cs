@@ -1,20 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.IO;
-using System.Threading.Tasks;
 using Dapper.FluentMap;
 using Livet;
-using Livet.Commands;
-using Livet.Messaging;
-using Livet.Messaging.IO;
-using Livet.EventListeners;
-using Livet.Messaging.Windows;
-using MaterialDesignThemes.Wpf;
-using Mobiquitous2016App.Models;
 using Mobiquitous2016App.Models.EcologModels;
 using Mobiquitous2016App.Models.MapModels;
 using Mobiquitous2016App.ObjectRelationalMaps;
@@ -114,9 +102,9 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
             {
                 for (int i = 0; i < semanticLink.Links.Count - 1; i++)
                 {
-                    InvokeScript("addCircle",
+                    /*InvokeScript("addCircle",
                         semanticLink.Links[i].Latitude,
-                        semanticLink.Links[i].Longitude);
+                        semanticLink.Links[i].Longitude);*/
 
                     if (semanticLink.Links[i].LinkId.Equals(semanticLink.Links[i + 1].LinkId))
 

@@ -7,6 +7,11 @@ var selectedID = -1;				//! 選択されているマーカーの識別子。
 
 var currentCircle;
 
+var yellow = "#ffff00";
+var red = "#ff0000";
+var pink = "#da70d6";
+var black = "#000";
+
 // Marker に id プロパティを追加 ( 初期値は無効値 )
 google.maps.Marker.prototype.id = -1;
 
@@ -41,49 +46,36 @@ function reInitialize() {
     removeAllCircles();
 }
 
-function getRandomColor(number) {
+function getColor(number) {
 
-    switch (number % 19) {
-        case 0:
-            return "#E60012";
-        case 1:
-            return "#8FC31F";
-        case 2:
-            return "#00A0E9";
-        case 3:
-            return "#920783";
-        case 4:
-            return "#EB6100";
-        case 5:
-            return "#22AC38";
-        case 6:
-            return "#0086D1";
-        case 7:
-            return "#BE0081";
-        case 8:
-            return "#F39800";
-        case 9:
-            return "#009944";
-        case 10:
-            return "#0068B7";
-        case 11:
-            return "#E4007F";
-        case 12:
-            return "#FCC800";
-        case 13:
-            return "#009B6B";
-        case 14:
-            return "#00479D";
-        case 15:
-            return "#E5006A";
-        case 16:
-            return "#FFF100";
-        case 17:
-            return "#009E96";
-        case 18:
-            return "#1D2088";
+    switch (number) {
+        case 188:
+            return pink;
+        case 189:
+            return red;
+        case 190:
+            return red;
+        case 191:
+            return red;
+        case 192:
+            return red;
+        case 193:
+            return pink;
+        case 194:
+            return pink;
+        case 195:
+            return pink;
+        case 196:
+            return pink;
+        case 197:
+            return red;
+        case 198:
+            return red;
+        case 199:
+            return yellow;
+        default:
+            return black;
     }
-
 }
 
 function addLine(semanticLinkID ,latitude1, longitude1, latitude2, longitude2) {
@@ -98,7 +90,7 @@ function addLine(semanticLinkID ,latitude1, longitude1, latitude2, longitude2) {
     var polyLineOptions = {
         path: mapPoints,
         strokeWeight: 5,
-        strokeColor: getRandomColor(semanticLinkID),
+        strokeColor: getColor(semanticLinkID),
         strokeOpacity: "1.0"
     };
 
@@ -119,7 +111,7 @@ function addCircle(latitude, longitude) {
     var circleOptions = {
         center: new google.maps.LatLng(latitude, longitude),
         radius: 3,
-        strokeWeight: 1,
+        strokeWeight: 3,
         strokeColor: "#000000",
         strokeOpacity: 1.0,
         fillColor: "#000000",
