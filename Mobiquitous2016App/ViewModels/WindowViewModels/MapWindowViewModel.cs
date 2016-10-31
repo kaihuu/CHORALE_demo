@@ -8,6 +8,7 @@ using Livet.Messaging;
 using Mobiquitous2016App.Models.EcologModels;
 using Mobiquitous2016App.Models.MapModels;
 using Mobiquitous2016App.ObjectRelationalMaps;
+using Mobiquitous2016App.ORMaps;
 using Mobiquitous2016App.Views.Windows;
 
 namespace Mobiquitous2016App.ViewModels.WindowViewModels
@@ -71,12 +72,6 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
 
         public void Initialize()
         {
-            FluentMapper.Initialize(config =>
-            {
-                config.AddMap(new LinkMap());
-                config.AddMap(new SemanticLinkMap());
-            });
-
             SemanticLinks = SemanticLink.OutwardSemanticLinks;
 
             Uri = $"{AppDomain.CurrentDomain.BaseDirectory}Resources\\index.html";

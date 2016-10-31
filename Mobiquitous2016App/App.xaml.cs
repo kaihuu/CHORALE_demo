@@ -4,8 +4,10 @@ using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Windows;
-
+using Dapper.FluentMap;
 using Livet;
+using Mobiquitous2016App.ObjectRelationalMaps;
+using Mobiquitous2016App.ORMaps;
 
 namespace Mobiquitous2016App
 {
@@ -18,6 +20,13 @@ namespace Mobiquitous2016App
         {
             DispatcherHelper.UIDispatcher = Dispatcher;
             //AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
+
+            FluentMapper.Initialize(config =>
+            {
+                config.AddMap(new LinkMap());
+                config.AddMap(new SemanticLinkMap());
+                config.AddMap(new EcologMap());
+            });
         }
 
         //集約エラーハンドラ

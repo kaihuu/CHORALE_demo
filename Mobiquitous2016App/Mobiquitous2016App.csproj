@@ -140,9 +140,11 @@
     <Compile Include="Daos\DatabaseConnection.cs" />
     <Compile Include="Daos\LinkDao.cs" />
     <Compile Include="Daos\SemanticLinkDao.cs" />
+    <Compile Include="Models\EcologModels\Ecolog.cs" />
     <Compile Include="Models\EcologModels\Link.cs" />
     <Compile Include="Models\EcologModels\SemanticLink.cs" />
     <Compile Include="Models\MapModels\MapHost.cs" />
+    <Compile Include="ORMaps\EcologMap.cs" />
     <Compile Include="ORMaps\LinkMap.cs" />
     <Compile Include="ORMaps\SemanticLinkMap.cs" />
     <Compile Include="ViewModels\WindowViewModels\MapWindowViewModel.cs" />
