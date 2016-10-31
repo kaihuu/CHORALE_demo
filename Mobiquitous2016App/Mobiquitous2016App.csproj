@@ -143,8 +143,8 @@
     <Compile Include="Models\EcologModels\Link.cs" />
     <Compile Include="Models\EcologModels\SemanticLink.cs" />
     <Compile Include="Models\MapModels\MapHost.cs" />
-    <Compile Include="ObjectRelationalMaps\LinkMap.cs" />
-    <Compile Include="ObjectRelationalMaps\SemanticLinkMap.cs" />
+    <Compile Include="ORMaps\LinkMap.cs" />
+    <Compile Include="ORMaps\SemanticLinkMap.cs" />
     <Compile Include="ViewModels\WindowViewModels\MapWindowViewModel.cs" />
     <Compile Include="Views\Windows\MapWindow.xaml.cs">
       <DependentUpon>MapWindow.xaml</DependentUpon>
