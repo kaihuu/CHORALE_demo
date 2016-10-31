@@ -13,6 +13,7 @@ using Livet.Messaging.Windows;
 using MaterialDesignThemes.Wpf;
 using Mobiquitous2016App.Models;
 using Mobiquitous2016App.Models.EcologModels;
+using Mobiquitous2016App.Properties;
 using Reactive.Bindings;
 
 namespace Mobiquitous2016App.ViewModels.WindowViewModels
@@ -80,8 +81,8 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
         public void Initialize()
         {
             Title = "CHORALE";
-            BackgroundColor = "#1976D2";
-            TextColor = "#FFF";
+            BackgroundColor = Resources.ColorBlue;
+            TextColor = Resources.ColorWhite;
             //Title = new ReactiveProperty<string> { Value = "CHORALE" };
             //BackgroundColor = new ReactiveProperty<string> { Value = "#1976D2" };
             //TextColor = new ReactiveProperty<string> { Value = "#FFF" };
@@ -90,29 +91,29 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
         public void SwitchToChorale()
         {
             Title = "CHORALE";
-            BackgroundColor = "#1976D2";
-            TextColor = "#FFF";
+            BackgroundColor = Resources.ColorBlue;
+            TextColor = Resources.ColorWhite;
         }
 
         public void SwitchTo3DChorale()
         {
             Title = "3D CHORALE";
-            BackgroundColor = "#D32F2F";
-            TextColor = "#FFF";
+            BackgroundColor = Resources.ColorRed;
+            TextColor = Resources.ColorWhite;
         }
 
         public void SwitchToEcgs()
         {
             Title = "ECGs";
-            BackgroundColor = "#FBC02D";
-            TextColor = "#271e1a";
+            BackgroundColor = Resources.ColorYellow;
+            TextColor = Resources.ColorBlack800;
         }
 
         public void SwitchTo3DEcgs()
         {
             Title = "3D ECGs";
-            BackgroundColor = "#388E3C";
-            TextColor = "#FFF";
+            BackgroundColor = Resources.ColorGreen;
+            TextColor = Resources.ColorWhite;
         }
     }
 }
