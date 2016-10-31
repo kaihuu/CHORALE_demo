@@ -12,12 +12,15 @@ using Livet.EventListeners;
 using Livet.Messaging.Windows;
 using MaterialDesignThemes.Wpf;
 using Mobiquitous2016App.Models;
+using Mobiquitous2016App.Models.EcologModels;
 using Reactive.Bindings;
 
 namespace Mobiquitous2016App.ViewModels.WindowViewModels
 {
     public class DetailWindowViewModel : ViewModel
     {
+        private SemanticLink _semanticLink;
+
         #region Title変更通知プロパティ
         private string _Title;
 
@@ -68,6 +71,11 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
             }
         }
         #endregion
+
+        public DetailWindowViewModel(SemanticLink semanticLink)
+        {
+            _semanticLink = semanticLink;
+        }
 
         public void Initialize()
         {

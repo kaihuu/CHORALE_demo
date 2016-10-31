@@ -125,7 +125,8 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
 
         public void TransitToDetailWindow(int semanticLinkId)
         {
-            var message = new TransitionMessage(typeof(DetailWindow), new DetailWindowViewModel(), TransitionMode.Normal);
+            var semanticLink = SemanticLinks.FirstOrDefault(s => s.SemanticLinkId == semanticLinkId);
+            var message = new TransitionMessage(typeof(DetailWindow), new DetailWindowViewModel(semanticLink), TransitionMode.Normal);
             Messenger.Raise(message);
         }
     }
