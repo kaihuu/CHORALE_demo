@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows;
 using Dapper.FluentMap;
 using Livet;
+using Livet.Messaging;
 using Mobiquitous2016App.Models.EcologModels;
 using Mobiquitous2016App.Models.MapModels;
 using Mobiquitous2016App.ObjectRelationalMaps;
+using Mobiquitous2016App.Views.Windows;
 
 namespace Mobiquitous2016App.ViewModels.WindowViewModels
 {
@@ -120,9 +123,10 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
             InvokeScript("moveMap", SemanticLinks.Average(v => v.Links.Average(l => l.Latitude)), SemanticLinks.Average(v => v.Links.Average(l => l.Longitude)));
         }
 
-        public void ShowDialog(int semanticLinkId)
+        public void TransitToDetailWindow(int semanticLinkId)
         {
-            
+            var message = new TransitionMessage(typeof(DetailWindow), new DetailWindowViewModel(), TransitionMode.Normal);
+            Messenger.Raise(message);
         }
     }
 }

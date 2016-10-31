@@ -21,7 +21,7 @@ namespace Mobiquitous2016App.Models.MapModels
 
         public void OnLineClicked(int semanticLinkId)
         {
-            MapWindowViewModel.ShowDialog(semanticLinkId);
+            MapWindowViewModel.TransitToDetailWindow(semanticLinkId);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
