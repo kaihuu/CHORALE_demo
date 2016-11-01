@@ -138,11 +138,13 @@
     </ApplicationDefinition>
     <Compile Include="Behaviors\WebBrowserBehavior.cs" />
     <Compile Include="Daos\DatabaseConnection.cs" />
+    <Compile Include="Daos\EcologDao.cs" />
     <Compile Include="Daos\LinkDao.cs" />
     <Compile Include="Daos\SemanticLinkDao.cs" />
     <Compile Include="Models\EcologModels\Ecolog.cs" />
     <Compile Include="Models\EcologModels\Link.cs" />
     <Compile Include="Models\EcologModels\SemanticLink.cs" />
+    <Compile Include="Models\EcologModels\TripDirection.cs" />
     <Compile Include="Models\GraphModels\GraphDatum.cs" />
     <Compile Include="Models\MapModels\MapHost.cs" />
     <Compile Include="Models\Model.cs" />
