@@ -5,6 +5,7 @@ using System.Text;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using Livet;
 using Livet.Commands;
 using Livet.Messaging;
@@ -18,6 +19,8 @@ using Mobiquitous2016App.Models.EcologModels;
 using Mobiquitous2016App.Models.GraphModels;
 using Mobiquitous2016App.Properties;
 using Mobiquitous2016App.Utils;
+using Mobiquitous2016App.ViewModels.PageViewModels;
+using Mobiquitous2016App.Views.Pages;
 using Reactive.Bindings;
 
 namespace Mobiquitous2016App.ViewModels.WindowViewModels
@@ -97,6 +100,23 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
         }
         #endregion
 
+        #region CurrentPage変更通知プロパティ
+        private Page _CurrentPage;
+
+        public Page CurrentPage
+        {
+            get
+            { return _CurrentPage; }
+            set
+            { 
+                if (_CurrentPage == value)
+                    return;
+                _CurrentPage = value;
+                RaisePropertyChanged();
+            }
+        }
+        #endregion
+
         public GraphWindowViewModel()
         {
         }
@@ -151,6 +171,8 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
                 GraphDataList = EcologDao.GetGraphDataOnSemanticLink(SemanticLink, Direction);
                 OutlierExclusion();
             });
+
+            SwitchToChorale();
         }
 
         public void SwitchToChorale()
@@ -158,6 +180,10 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
             Title = "CHORALE";
             BackgroundColor = Resources.ColorBlue;
             TextColor = Resources.ColorWhite;
+
+            var page = new ChoralePage();
+            page.DataContext = new ChoralePageViewModel(this);
+            CurrentPage = page;
         }
 
         public void SwitchTo3DChorale()

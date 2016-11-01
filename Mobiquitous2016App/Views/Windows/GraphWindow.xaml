@@ -205,6 +205,9 @@
                          Style="{StaticResource MaterialDesignCircularProgressBar}"
                          Visibility="{Binding ProgressBarVisibility}" />
 
+            <Frame Content="{Binding CurrentPage}"
+                   NavigationUIVisibility="Hidden" />
+
         </Grid>
     </Grid>
 </Window>
