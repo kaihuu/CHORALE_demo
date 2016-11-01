@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Threading.Tasks;
 using Livet;
 using Livet.Commands;
 using Livet.Messaging;
@@ -16,15 +17,17 @@ using Mobiquitous2016App.Models;
 using Mobiquitous2016App.Models.EcologModels;
 using Mobiquitous2016App.Models.GraphModels;
 using Mobiquitous2016App.Properties;
+using Mobiquitous2016App.Utils;
 using Reactive.Bindings;
 
 namespace Mobiquitous2016App.ViewModels.WindowViewModels
 {
     public class GraphWindowViewModel : ViewModel
     {
-        private readonly SemanticLink _semanticLink;
-        private readonly TripDirection _direction;
-        private readonly List<GraphDatum> _graphDataList;
+        public SemanticLink SemanticLink { get; set; }
+        public TripDirection Direction { get; set; }
+        public List<GraphDatum> GraphDataList { get; set; }
+        public ChoraleModel ChoraleModel { get; set; }
 
         #region Title変更通知プロパティ
         private string _Title;
@@ -77,23 +80,77 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
         }
         #endregion
 
+        #region ProgressBarVisibility変更通知プロパティ
+        private System.Windows.Visibility _ProgressBarVisibility;
+
+        public System.Windows.Visibility ProgressBarVisibility
+        {
+            get
+            { return _ProgressBarVisibility; }
+            set
+            { 
+                if (_ProgressBarVisibility == value)
+                    return;
+                _ProgressBarVisibility = value;
+                RaisePropertyChanged();
+            }
+        }
+        #endregion
+
         public GraphWindowViewModel()
         {
-            
         }
 
         public GraphWindowViewModel(SemanticLink semanticLink, TripDirection direction)
         {
-            _semanticLink = semanticLink;
-            _direction = direction;
-            _graphDataList = EcologDao.GetGraphDataOnSemanticLink(_semanticLink, _direction);
+            SemanticLink = semanticLink;
+            Direction = direction;
         }
 
-        public void Initialize()
+        public void OutlierExclusion()
+        {
+            var quartilesEnergy = MathUtil.Quartiles(GraphDataList.OrderBy(d => d.LostEnergy).Select(d => (double)d.LostEnergy).ToArray());
+            var firstQuartileEnergy = quartilesEnergy.Item1;
+            var thirdQuartileEnergy = quartilesEnergy.Item3;
+            var iqrEnergy = thirdQuartileEnergy - firstQuartileEnergy;
+
+            GraphDataList = GraphDataList.Where(d => d.LostEnergy > firstQuartileEnergy - 1.5 * iqrEnergy)
+                .Where(d => d.LostEnergy < thirdQuartileEnergy + 1.5 * iqrEnergy)
+                .ToList();
+
+            var quartilesTransitTime = MathUtil.Quartiles(GraphDataList.OrderBy(d => d.TransitTime).Select(d => (double)d.TransitTime).ToArray());
+            var firstQuartileTransitTime = quartilesTransitTime.Item1;
+            var thirdQuartileTransitTime = quartilesTransitTime.Item3;
+            var iqrTransitTime = thirdQuartileTransitTime - thirdQuartileTransitTime;
+
+            GraphDataList = GraphDataList.Where(d => d.TransitTime > firstQuartileTransitTime - 1.5 * iqrTransitTime)
+                .Where(d => d.TransitTime < thirdQuartileTransitTime + 1.5 * iqrTransitTime)
+                .ToList();
+
+            ChoraleModel = new ChoraleModel
+            {
+                ClassNumber = MathUtil.CalculateClassNumber(GraphDataList),
+                MinLostEnegry = GraphDataList.Min(d => d.LostEnergy),
+                MaxLostEnergy = GraphDataList.Max(d => d.LostEnergy),
+                ClassWidthEnergy = (GraphDataList.Max(d => d.LostEnergy) - GraphDataList.Min(d => d.LostEnergy)) / MathUtil.CalculateClassNumber(GraphDataList),
+                MinTransitTime = GraphDataList.Min(d => d.TransitTime),
+                MaxTransitTime = GraphDataList.Max(d => d.TransitTime),
+                ClassWidthTransitTime = (float)(GraphDataList.Max(d => d.TransitTime) - GraphDataList.Min(d => d.TransitTime)) / MathUtil.CalculateClassNumber(GraphDataList)
+            };
+        }
+
+        public async void Initialize()
         {
             Title = "CHORALE";
             BackgroundColor = Resources.ColorBlue;
             TextColor = Resources.ColorWhite;
+            ProgressBarVisibility = System.Windows.Visibility.Visible;
+
+            await Task.Run(() =>
+            {
+                GraphDataList = EcologDao.GetGraphDataOnSemanticLink(SemanticLink, Direction);
+                OutlierExclusion();
+            });
         }
 
         public void SwitchToChorale()

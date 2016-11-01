@@ -7,6 +7,8 @@
         xmlns:l="http://schemas.livet-mvvm.net/2011/wpf"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:windowViewModels="clr-namespace:Mobiquitous2016App.ViewModels.WindowViewModels"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{StaticResource MaterialDesignFont}"
         Width="800"
         Height="600"
         AllowsTransparency="True"
@@ -193,5 +195,16 @@
 
         </materialDesign:Card>
 
+        <Grid Grid.Row="1">
+
+            <ProgressBar Width="100"
+                         Height="100"
+                         HorizontalAlignment="Center"
+                         VerticalAlignment="Center"
+                         IsIndeterminate="True"
+                         Style="{StaticResource MaterialDesignCircularProgressBar}"
+                         Visibility="{Binding ProgressBarVisibility}" />
+
+        </Grid>
     </Grid>
 </Window>

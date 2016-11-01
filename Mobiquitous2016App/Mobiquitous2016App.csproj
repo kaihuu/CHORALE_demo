@@ -145,17 +145,27 @@
     <Compile Include="Models\EcologModels\Link.cs" />
     <Compile Include="Models\EcologModels\SemanticLink.cs" />
     <Compile Include="Models\EcologModels\TripDirection.cs" />
+    <Compile Include="Models\GraphModels\ChoraleModel.cs" />
     <Compile Include="Models\GraphModels\GraphDatum.cs" />
     <Compile Include="Models\MapModels\MapHost.cs" />
     <Compile Include="Models\Model.cs" />
     <Compile Include="ORMaps\EcologMap.cs" />
     <Compile Include="ORMaps\LinkMap.cs" />
     <Compile Include="ORMaps\SemanticLinkMap.cs" />
+    <Compile Include="Utils\MathUtil.cs" />
+    <Compile Include="ViewModels\PageViewModels\ChoralePageViewModel.cs" />
     <Compile Include="ViewModels\WindowViewModels\MapWindowViewModel.cs" />
+    <Compile Include="Views\Pages\ChoralePage.xaml.cs">
+      <DependentUpon>ChoralePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Windows\MapWindow.xaml.cs">
       <DependentUpon>MapWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="Views\Windows\GraphlWindow.xaml">
+    <Page Include="Views\Pages\ChoralePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Windows\GraphWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -169,8 +179,8 @@
     </Compile>
     <Compile Include="ViewModels\WindowViewModels\GraphWindowViewModel.cs" />
     <Compile Include="ViewModels\WindowViewModels\MainWindowViewModel.cs" />
-    <Compile Include="Views\Windows\GraphlWindow.xaml.cs">
-      <DependentUpon>GraphlWindow.xaml</DependentUpon>
+    <Compile Include="Views\Windows\GraphWindow.xaml.cs">
+      <DependentUpon>GraphWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -223,9 +233,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ViewModels\PageViewModels\" />
     <Folder Include="Views\Items\" />
-    <Folder Include="Views\Pages\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
