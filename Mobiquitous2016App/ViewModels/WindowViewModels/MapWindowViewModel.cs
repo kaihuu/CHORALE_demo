@@ -5,6 +5,7 @@ using System.Windows;
 using Dapper.FluentMap;
 using Livet;
 using Livet.Messaging;
+using Mobiquitous2016App.Daos;
 using Mobiquitous2016App.Models.EcologModels;
 using Mobiquitous2016App.Models.MapModels;
 using Mobiquitous2016App.ObjectRelationalMaps;
@@ -72,7 +73,7 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
 
         public void Initialize()
         {
-            SemanticLinks = SemanticLink.OutwardSemanticLinks;
+            SemanticLinks = SemanticLinkDao.OutwardSemanticLinks;
 
             Uri = $"{AppDomain.CurrentDomain.BaseDirectory}Resources\\index.html";
 
@@ -84,13 +85,13 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
 
         public void SetOutwardSemanticLinks()
         {
-            SemanticLinks = SemanticLink.OutwardSemanticLinks;
+            SemanticLinks = SemanticLinkDao.OutwardSemanticLinks;
             InvokeScript("initialize", null);
         }
 
         public void SetHomewardSemanticLinks()
         {
-            SemanticLinks = SemanticLink.HomewardSemanticLinks;
+            SemanticLinks = SemanticLinkDao.HomewardSemanticLinks;
             InvokeScript("initialize", null);
         }
 

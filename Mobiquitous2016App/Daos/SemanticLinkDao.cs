@@ -14,7 +14,11 @@ namespace Mobiquitous2016App.Daos
 {
     public class SemanticLinkDao
     {
-        public static List<SemanticLink> GetOutwardSemanticLinks()
+        public static IList<SemanticLink> OutwardSemanticLinks => GetOutwardSemanticLinks();
+
+        public static IList<SemanticLink> HomewardSemanticLinks => GetHomewardSemanticLinks();
+
+        private static List<SemanticLink> GetOutwardSemanticLinks()
         {
             using (var connection = new SqlConnection(DatabaseConnection.ConnectionString))
             {
@@ -45,7 +49,7 @@ namespace Mobiquitous2016App.Daos
             }
         }
 
-        public static List<SemanticLink> GetHomewardSemanticLinks()
+        private static List<SemanticLink> GetHomewardSemanticLinks()
         {
             using (var connection = new SqlConnection(DatabaseConnection.ConnectionString))
             {
