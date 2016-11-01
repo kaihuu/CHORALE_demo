@@ -1,4 +1,4 @@
-﻿<Window x:Class="Mobiquitous2016App.Views.Windows.DetailWindow"
+﻿<Window x:Class="Mobiquitous2016App.Views.Windows.GraphWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
@@ -13,7 +13,7 @@
         WindowStyle="None">
 
     <Window.DataContext>
-        <windowViewModels:DetailWindowViewModel />
+        <windowViewModels:GraphWindowViewModel />
     </Window.DataContext>
 
 

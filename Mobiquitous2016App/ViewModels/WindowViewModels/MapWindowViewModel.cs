@@ -33,6 +33,8 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
         }
         #endregion
 
+        private TripDirection _direction;
+
         public delegate void InvokeScriptDelegate(string scriptName, params object[] args);
 
         #region MapHost変更通知プロパティ
@@ -43,7 +45,7 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
             get
             { return _MapHost; }
             set
-            { 
+            {
                 if (_MapHost == value)
                     return;
                 _MapHost = value;
@@ -60,7 +62,7 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
             get
             { return _Uri; }
             set
-            { 
+            {
                 if (_Uri == value)
                     return;
                 _Uri = value;
@@ -85,12 +87,14 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
 
         public void SetOutwardSemanticLinks()
         {
+            _direction = new TripDirection { Direction = "outward" };
             SemanticLinks = SemanticLinkDao.OutwardSemanticLinks;
             InvokeScript("initialize", null);
         }
 
         public void SetHomewardSemanticLinks()
         {
+            _direction = new TripDirection { Direction = "homeward" };
             SemanticLinks = SemanticLinkDao.HomewardSemanticLinks;
             InvokeScript("initialize", null);
         }
@@ -122,7 +126,7 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
         public void TransitToDetailWindow(int semanticLinkId)
         {
             var semanticLink = SemanticLinks.FirstOrDefault(s => s.SemanticLinkId == semanticLinkId);
-            var message = new TransitionMessage(typeof(DetailWindow), new DetailWindowViewModel(semanticLink), TransitionMode.Normal);
+            var message = new TransitionMessage(typeof(GraphWindow), new GraphWindowViewModel(semanticLink, _direction), TransitionMode.Normal);
             Messenger.Raise(message);
         }
     }

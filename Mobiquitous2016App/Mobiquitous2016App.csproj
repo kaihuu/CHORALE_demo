@@ -155,7 +155,7 @@
     <Compile Include="Views\Windows\MapWindow.xaml.cs">
       <DependentUpon>MapWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="Views\Windows\DetailWindow.xaml">
+    <Page Include="Views\Windows\GraphlWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -167,10 +167,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ViewModels\WindowViewModels\DetailWindowViewModel.cs" />
+    <Compile Include="ViewModels\WindowViewModels\GraphWindowViewModel.cs" />
     <Compile Include="ViewModels\WindowViewModels\MainWindowViewModel.cs" />
-    <Compile Include="Views\Windows\DetailWindow.xaml.cs">
-      <DependentUpon>DetailWindow.xaml</DependentUpon>
+    <Compile Include="Views\Windows\GraphlWindow.xaml.cs">
+      <DependentUpon>GraphlWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

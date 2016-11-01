@@ -26,9 +26,9 @@ namespace Mobiquitous2016App.Views.Windows
     /// <summary>
     /// DetailWindow.xaml の相互作用ロジック
     /// </summary>
-    public partial class DetailWindow : Window
+    public partial class GraphWindow : Window
     {
-        public DetailWindow()
+        public GraphWindow()
         {
             InitializeComponent();
             MouseLeftButtonDown += (sender, e) => DragMove();

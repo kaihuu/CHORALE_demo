@@ -11,16 +11,20 @@ using Livet.Messaging.IO;
 using Livet.EventListeners;
 using Livet.Messaging.Windows;
 using MaterialDesignThemes.Wpf;
+using Mobiquitous2016App.Daos;
 using Mobiquitous2016App.Models;
 using Mobiquitous2016App.Models.EcologModels;
+using Mobiquitous2016App.Models.GraphModels;
 using Mobiquitous2016App.Properties;
 using Reactive.Bindings;
 
 namespace Mobiquitous2016App.ViewModels.WindowViewModels
 {
-    public class DetailWindowViewModel : ViewModel
+    public class GraphWindowViewModel : ViewModel
     {
-        private SemanticLink _semanticLink;
+        private readonly SemanticLink _semanticLink;
+        private readonly TripDirection _direction;
+        private readonly List<GraphDatum> _graphDataList;
 
         #region Title変更通知プロパティ
         private string _Title;
@@ -30,7 +34,7 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
             get
             { return _Title; }
             set
-            { 
+            {
                 if (_Title == value)
                     return;
                 _Title = value;
@@ -47,7 +51,7 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
             get
             { return _BackgroundColor; }
             set
-            { 
+            {
                 if (_BackgroundColor == value)
                     return;
                 _BackgroundColor = value;
@@ -64,7 +68,7 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
             get
             { return _TextColor; }
             set
-            { 
+            {
                 if (_TextColor == value)
                     return;
                 _TextColor = value;
@@ -73,9 +77,16 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
         }
         #endregion
 
-        public DetailWindowViewModel(SemanticLink semanticLink)
+        public GraphWindowViewModel()
+        {
+            
+        }
+
+        public GraphWindowViewModel(SemanticLink semanticLink, TripDirection direction)
         {
             _semanticLink = semanticLink;
+            _direction = direction;
+            _graphDataList = EcologDao.GetGraphDataOnSemanticLink(_semanticLink, _direction);
         }
 
         public void Initialize()
@@ -83,9 +94,6 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
             Title = "CHORALE";
             BackgroundColor = Resources.ColorBlue;
             TextColor = Resources.ColorWhite;
-            //Title = new ReactiveProperty<string> { Value = "CHORALE" };
-            //BackgroundColor = new ReactiveProperty<string> { Value = "#1976D2" };
-            //TextColor = new ReactiveProperty<string> { Value = "#FFF" };
         }
 
         public void SwitchToChorale()
