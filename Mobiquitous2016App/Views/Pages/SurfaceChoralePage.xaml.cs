@@ -18,9 +18,9 @@ namespace Mobiquitous2016App.Views.Pages
     /// <summary>
     /// _3DChoralePage.xaml の相互作用ロジック
     /// </summary>
-    public partial class _3DChoralePage : Page
+    public partial class SurfaceChoralePage : Page
     {
-        public _3DChoralePage()
+        public SurfaceChoralePage()
         {
             InitializeComponent();
         }

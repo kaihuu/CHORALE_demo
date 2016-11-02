@@ -57,15 +57,37 @@
 
                     <chart:ChartColorModel.CustomBrushes>
 
-                        <SolidColorBrush Color="Blue" />
-                        <SolidColorBrush Color="#FF1E66FF" />
-                        <SolidColorBrush Color="#FF00AEFF" />
-                        <SolidColorBrush Color="Cyan" />
-                        <SolidColorBrush Color="#FF00FF8B" />
-                        <SolidColorBrush Color="#FF23FF00" />
-                        <SolidColorBrush Color="#FFB9FF00" />
-                        <SolidColorBrush Color="#FFFF9700" />
-                        <SolidColorBrush Color="Red" />
+                        <SolidColorBrush Color="#00008b" />
+                        <SolidColorBrush Color="#00299d" />
+                        <SolidColorBrush Color="#004cad" />
+                        <SolidColorBrush Color="#006ebd" />
+                        <SolidColorBrush Color="#008fcc" />
+                        <SolidColorBrush Color="#00b3dc" />
+                        <SolidColorBrush Color="#00d7ec" />
+                        <SolidColorBrush Color="#00f8fb" />
+                        <SolidColorBrush Color="#1affe4" />
+                        <SolidColorBrush Color="#1affe4" />
+                        <SolidColorBrush Color="#3effc0" />
+                        <SolidColorBrush Color="#5effa0" />
+                        <SolidColorBrush Color="#86ff78" />
+                        <SolidColorBrush Color="#a5ff59" />
+                        <SolidColorBrush Color="#c9ff35" />
+                        <SolidColorBrush Color="#edff11" />
+                        <SolidColorBrush Color="#fff900" />
+                        <SolidColorBrush Color="#ffed00" />
+                        <SolidColorBrush Color="#ffe100" />
+                        <SolidColorBrush Color="#ffd400" />
+                        <SolidColorBrush Color="#ffc800" />
+                        <SolidColorBrush Color="#ffbc00" />
+                        <SolidColorBrush Color="#ffb000" />
+                        <SolidColorBrush Color="#ffa500" />
+                        <SolidColorBrush Color="#ef8e00" />
+                        <SolidColorBrush Color="#de7700" />
+                        <SolidColorBrush Color="#ce6000" />
+                        <SolidColorBrush Color="#bf4900" />
+                        <SolidColorBrush Color="#ae3300" />
+                        <SolidColorBrush Color="#9e1c00" />
+                        <SolidColorBrush Color="#8f0600" />
 
                     </chart:ChartColorModel.CustomBrushes>
 

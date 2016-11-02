@@ -182,8 +182,7 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
             BackgroundColor = Resources.ColorBlue;
             TextColor = Resources.ColorWhite;
 
-            var page = new ChoralePage { DataContext = new ChoralePageViewModel(this) };
-            CurrentPage = page;
+            CurrentPage = new ChoralePage { DataContext = new ChoralePageViewModel(this) }; ;
         }
 
         public void SwitchTo3DChorale()
@@ -191,6 +190,8 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
             Title = "3D CHORALE";
             BackgroundColor = Resources.ColorRed;
             TextColor = Resources.ColorWhite;
+
+            CurrentPage = new SurfaceChoralePage { DataContext = new SurfaceChoraleViewModel(this) };
         }
 
         public void SwitchToEcgs()

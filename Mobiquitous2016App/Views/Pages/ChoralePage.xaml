@@ -12,10 +12,6 @@
       d:DesignWidth="300"
       mc:Ignorable="d">
 
-    <Page.DataContext>
-        <vm:ChoralePageViewModel />
-    </Page.DataContext>
-
     <Grid>
         <oxy:PlotView Grid.Row="0"
                           Margin="10,10,5,10"

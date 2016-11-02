@@ -16,10 +16,12 @@ namespace Mobiquitous2016App.Models.GraphModels
         public int MaxTransitTime { get; set; }
         public float ClassWidthTransitTime { get; set; }
         public double[,] Data { get; set; }
+        public IList<SurfaceData> SurfaceDataList { get; set; }
 
         public void SetData(IList<GraphDatum> list)
         {
             Data = new double[ClassNumber, ClassNumber];
+            SurfaceDataList = new List<SurfaceData>();
 
             double preTimeLevel = 0;
             double currentTimeLevel = MinTransitTime;
@@ -38,6 +40,13 @@ namespace Mobiquitous2016App.Models.GraphModels
                         .Where(d => d.TransitTime > preTimeLevel)
                         .Where(d => d.TransitTime <= currentTimeLevel)
                         .Count();
+
+                    SurfaceDataList.Add(new SurfaceData
+                    {
+                        X = currentTimeLevel,
+                        Z = currentEnergyLevel,
+                        Y = Data[i,j]
+                    });
 
                     if (j == 0)
                     {
