@@ -91,7 +91,7 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
             get
             { return _ProgressBarVisibility; }
             set
-            { 
+            {
                 if (_ProgressBarVisibility == value)
                     return;
                 _ProgressBarVisibility = value;
@@ -108,7 +108,7 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
             get
             { return _CurrentPage; }
             set
-            { 
+            {
                 if (_CurrentPage == value)
                     return;
                 _CurrentPage = value;
@@ -157,6 +157,7 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
                 MaxTransitTime = GraphDataList.Max(d => d.TransitTime),
                 ClassWidthTransitTime = (float)(GraphDataList.Max(d => d.TransitTime) - GraphDataList.Min(d => d.TransitTime)) / MathUtil.CalculateClassNumber(GraphDataList)
             };
+            ChoraleModel.SetData(GraphDataList);
         }
 
         public async void Initialize()
@@ -181,8 +182,7 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
             BackgroundColor = Resources.ColorBlue;
             TextColor = Resources.ColorWhite;
 
-            var page = new ChoralePage();
-            page.DataContext = new ChoralePageViewModel(this);
+            var page = new ChoralePage { DataContext = new ChoralePageViewModel(this) };
             CurrentPage = page;
         }
 

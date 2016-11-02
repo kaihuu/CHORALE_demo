@@ -155,12 +155,19 @@
     <Compile Include="Utils\MathUtil.cs" />
     <Compile Include="ViewModels\PageViewModels\ChoralePageViewModel.cs" />
     <Compile Include="ViewModels\WindowViewModels\MapWindowViewModel.cs" />
+    <Compile Include="Views\Pages\3DChoralePage.xaml.cs">
+      <DependentUpon>3DChoralePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Pages\ChoralePage.xaml.cs">
       <DependentUpon>ChoralePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Windows\MapWindow.xaml.cs">
       <DependentUpon>MapWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\Pages\3DChoralePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Pages\ChoralePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -232,9 +239,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Items\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
