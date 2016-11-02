@@ -173,7 +173,7 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
                 OutlierExclusion();
             });
 
-            SwitchToChorale();
+            SwitchTo3DEcgs();
         }
 
         public void SwitchToChorale()
@@ -199,6 +199,8 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
             Title = "ECGs";
             BackgroundColor = Resources.ColorYellow;
             TextColor = Resources.ColorBlack800;
+
+            CurrentPage = new ECGsPage { DataContext = new ECGsPageViewModel(this) };
         }
 
         public void SwitchTo3DEcgs()
@@ -206,6 +208,8 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
             Title = "3D ECGs";
             BackgroundColor = Resources.ColorGreen;
             TextColor = Resources.ColorWhite;
+
+            CurrentPage = new SurfaceECGsPage { DataContext = new SurfaceECGsPageViewModel(this) };
         }
     }
 }

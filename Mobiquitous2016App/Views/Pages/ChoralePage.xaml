@@ -5,7 +5,6 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:oxy="http://oxyplot.org/wpf"
-      xmlns:vm="clr-namespace:Mobiquitous2016App.ViewModels.PageViewModels"
       Background="{DynamicResource MaterialDesignPaper}"
       FontFamily="{StaticResource MaterialDesignFont}"
       d:DesignHeight="300"
@@ -14,7 +13,6 @@
 
     <Grid>
         <oxy:PlotView Grid.Row="0"
-                          Margin="10,10,5,10"
-                          Model="{Binding PlotModel}" />
+                      Model="{Binding PlotModel}" />
     </Grid>
 </Page>

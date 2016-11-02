@@ -15,7 +15,7 @@
                               ColumnSize="10"
                               EnableRotation="True"
                               EnableZooming="True"
-                              ItemsSource="{Binding DataValues}"
+                              ItemsSource="{Binding DataList}"
                               Palette="Custom"
                               Rotate="45"
                               RowSize="10"

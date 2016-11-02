@@ -157,19 +157,27 @@
     <Compile Include="ViewModels\PageViewModels\ECGsPageViewModel.cs" />
     <Compile Include="ViewModels\PageViewModels\SurfaceChoraleViewModel.cs" />
     <Compile Include="ViewModels\PageViewModels\ChoralePageViewModel.cs" />
+    <Compile Include="ViewModels\PageViewModels\SurfaceECGsPageViewModel.cs" />
     <Compile Include="ViewModels\WindowViewModels\MapWindowViewModel.cs" />
+    <Compile Include="Views\Pages\ChoralePage.xaml.cs">
+      <DependentUpon>ChoralePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Pages\ECGsPage.xaml.cs">
       <DependentUpon>ECGsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Pages\SurfaceChoralePage.xaml.cs">
       <DependentUpon>SurfaceChoralePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Pages\ChoralePage.xaml.cs">
-      <DependentUpon>ChoralePage.xaml</DependentUpon>
+    <Compile Include="Views\Pages\SurfaceECGsPage.xaml.cs">
+      <DependentUpon>SurfaceECGsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Windows\MapWindow.xaml.cs">
       <DependentUpon>MapWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\Pages\ChoralePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Pages\ECGsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -178,7 +186,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Pages\ChoralePage.xaml">
+    <Page Include="Views\Pages\SurfaceECGsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
