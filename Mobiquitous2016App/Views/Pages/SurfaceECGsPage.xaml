@@ -29,7 +29,7 @@
                               ColumnSize="10"
                               EnableRotation="True"
                               EnableZooming="True"
-                              ItemsSource="{Binding DataValues}"
+                              ItemsSource="{Binding GraphData}"
                               Palette="Custom"
                               Rotate="45"
                               RowSize="10"
@@ -37,9 +37,9 @@
                               ShowLeftWall="False"
                               Tilt="45"
                               Type="Surface"
-                              XBindingPath="X"
-                              YBindingPath="Y"
-                              ZBindingPath="Z">
+                              XBindingPath="TransitTime"
+                              YBindingPath="ConvertLoss"
+                              ZBindingPath="LostEnergy">
 
             <chart:SfSurfaceChart.ColorModel>
 
@@ -111,7 +111,7 @@
                               ColumnSize="10"
                               EnableRotation="True"
                               EnableZooming="True"
-                              ItemsSource="{Binding DataValues}"
+                              ItemsSource="{Binding GraphData}"
                               Palette="Custom"
                               Rotate="45"
                               RowSize="10"
@@ -119,9 +119,9 @@
                               ShowLeftWall="False"
                               Tilt="45"
                               Type="Surface"
-                              XBindingPath="X"
-                              YBindingPath="Y"
-                              ZBindingPath="Z">
+                              XBindingPath="TransitTime"
+                              YBindingPath="AirResistance"
+                              ZBindingPath="LostEnergy">
 
             <chart:SfSurfaceChart.ColorModel>
 
@@ -193,7 +193,7 @@
                               ColumnSize="10"
                               EnableRotation="True"
                               EnableZooming="True"
-                              ItemsSource="{Binding DataValues}"
+                              ItemsSource="{Binding GraphData}"
                               Palette="Custom"
                               Rotate="45"
                               RowSize="10"
@@ -201,9 +201,9 @@
                               ShowLeftWall="False"
                               Tilt="45"
                               Type="Surface"
-                              XBindingPath="X"
-                              YBindingPath="Y"
-                              ZBindingPath="Z">
+                              XBindingPath="TransitTime"
+                              YBindingPath="RollingResistance"
+                              ZBindingPath="LostEnergy">
 
             <chart:SfSurfaceChart.ColorModel>
 
@@ -275,7 +275,7 @@
                               ColumnSize="10"
                               EnableRotation="True"
                               EnableZooming="True"
-                              ItemsSource="{Binding DataValues}"
+                              ItemsSource="{Binding GraphData}"
                               Palette="Custom"
                               Rotate="45"
                               RowSize="10"
@@ -283,9 +283,9 @@
                               ShowLeftWall="False"
                               Tilt="45"
                               Type="Surface"
-                              XBindingPath="X"
-                              YBindingPath="Y"
-                              ZBindingPath="Z">
+                              XBindingPath="TransitTime"
+                              YBindingPath="RegeneLoss"
+                              ZBindingPath="LostEnergy">
 
             <chart:SfSurfaceChart.ColorModel>
 

@@ -31,7 +31,7 @@ namespace Mobiquitous2016App.Views.Windows
         public GraphWindow()
         {
             InitializeComponent();
-            MouseLeftButtonDown += (sender, e) => DragMove();
+            //MouseLeftButtonDown += (sender, e) => DragMove();
         }
 
         private void MinimizeButton_OnClick(object sender, RoutedEventArgs e)
