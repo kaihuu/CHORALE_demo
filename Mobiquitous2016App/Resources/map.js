@@ -42,12 +42,6 @@ function initialize() {
     });
 }
 
-/*function reInitialize() {
-    isInitialized = false;
-    removeAllCircles();
-    removeAllImageMarker();
-}*/
-
 function getColor(number) {
 
     switch (number) {

@@ -99,10 +99,26 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
             InvokeScript("initialize", null);
         }
 
+        public void SetNone()
+        {
+            InvokeScript("removeAllImageMarker", null);
+        }
+
+        public void SetChorale()
+        {
+            InvokeScript("removeAllImageMarker", null);
+            InvokeScript("addImageMarker", $"{AppDomain.CurrentDomain.BaseDirectory}Resources\\1.png", 35.473695, 139.590859);
+        }
+
+        // ReSharper disable once InconsistentNaming
+        public void SetECGs()
+        {
+            InvokeScript("removeAllImageMarker", null);
+            InvokeScript("addImageMarker", $"{AppDomain.CurrentDomain.BaseDirectory}Resources\\2.png", 35.473695, 139.590859);
+        }
+
         public void DrawSemanticLinkLines()
         {
-            //InvokeScript("addImageMarker", $"{AppDomain.CurrentDomain.BaseDirectory}Resources\\1.png", 35.473695, 139.590859);
-
             foreach (var semanticLink in SemanticLinks)
             {
                 for (int i = 0; i < semanticLink.Links.Count - 1; i++)

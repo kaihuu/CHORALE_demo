@@ -58,11 +58,31 @@
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </Button>
-            
+
+            <Button Content="None"
+                    Margin="10,10,10,0">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <l:LivetCallMethodAction MethodName="SetNone" MethodTarget="{Binding}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
             <Button Content="CHORALE"
-                    Margin="10,10,10,0"/>
+                    Margin="10,0,10,0">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <l:LivetCallMethodAction MethodName="SetChorale" MethodTarget="{Binding}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
             <Button Content="ECGs"
-                    Margin="10,0,10,0"/>
+                    Margin="10,0,10,0">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <l:LivetCallMethodAction MethodName="SetECGs" MethodTarget="{Binding}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
 
         </StackPanel>
 

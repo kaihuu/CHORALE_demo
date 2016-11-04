@@ -260,6 +260,9 @@
     <Content Include="Resources\1.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\map.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
