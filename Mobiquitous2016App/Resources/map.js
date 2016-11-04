@@ -2,6 +2,7 @@ var map;							//! マップ オブジェクト。
 var geo;							//! Geo コード取得用オブジェクト。
 var isInitialized = false;			//! 初期化フラグ。
 var circles = [];	//! マーカーのコレクション。
+var imageMarkers = [];
 var nextID = 0;				//! 次に割り当てられるマーカーの識別子。
 var selectedID = -1;				//! 選択されているマーカーの識別子。
 
@@ -41,10 +42,11 @@ function initialize() {
     });
 }
 
-function reInitialize() {
+/*function reInitialize() {
     isInitialized = false;
     removeAllCircles();
-}
+    removeAllImageMarker();
+}*/
 
 function getColor(number) {
 
@@ -78,7 +80,7 @@ function getColor(number) {
     }
 }
 
-function addLine(semanticLinkID ,latitude1, longitude1, latitude2, longitude2) {
+function addLine(semanticLinkID, latitude1, longitude1, latitude2, longitude2) {
 
     // ラインを引く座標の配列を作成 
     var mapPoints = [
@@ -99,8 +101,8 @@ function addLine(semanticLinkID ,latitude1, longitude1, latitude2, longitude2) {
     poly.id = semanticLinkID;
     poly.setMap(map);
 
-    google.maps.event.addListener(poly, "click", function(){
-        
+    google.maps.event.addListener(poly, "click", function () {
+
         window.external.OnLineClicked(poly.id);
     });
 }
@@ -116,7 +118,7 @@ function addCircle(latitude, longitude) {
         strokeOpacity: 1.0,
         fillColor: "#000000",
         fillOpacity: 1.0,
-        zIndex:2
+        zIndex: 2
     };
 
     // 円を設定
@@ -138,7 +140,7 @@ function moveCurrentCircle(latitude, longitude) {
         currentCircle.setMap(null);
     }
 
-    circleOptions = {
+    var circleOptions = {
         center: new google.maps.LatLng(latitude, longitude),
         radius: 5,
         strokeWeight: 1,
@@ -146,7 +148,7 @@ function moveCurrentCircle(latitude, longitude) {
         strokeOpacity: 1.0,
         fillColor: "#FF0000",
         fillOpacity: 1.0,
-        zIndex:4
+        zIndex: 4
     }
 
     // 円を設定
@@ -158,4 +160,23 @@ function moveMap(latitude, longitude) {
 
     var location = new google.maps.LatLng(latitude, longitude);
     map.setCenter(location);
+}
+
+function addImageMarker(imagePath, latitude, longitude) {
+
+    var imageMarker = new google.maps.Marker({
+        position: new google.maps.LatLng(latitude, longitude),
+        map: map,
+        draggable: true,
+        icon: imagePath
+    });
+
+    imageMarkers.push(imageMarker);
+}
+
+function removeAllImageMarker() {
+
+    for (var i = 0; i < imageMarkers.length; i++) {
+        imageMarkers[i].setMap(null);
+    }
 }

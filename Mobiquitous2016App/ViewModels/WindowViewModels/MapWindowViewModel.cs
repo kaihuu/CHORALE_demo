@@ -101,13 +101,15 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
 
         public void DrawSemanticLinkLines()
         {
+            //InvokeScript("addImageMarker", $"{AppDomain.CurrentDomain.BaseDirectory}Resources\\1.png", 35.473695, 139.590859);
+
             foreach (var semanticLink in SemanticLinks)
             {
                 for (int i = 0; i < semanticLink.Links.Count - 1; i++)
                 {
-                    /*InvokeScript("addCircle",
+                    InvokeScript("addCircle",
                         semanticLink.Links[i].Latitude,
-                        semanticLink.Links[i].Longitude);*/
+                        semanticLink.Links[i].Longitude);#1#
 
                     if (semanticLink.Links[i].LinkId.Equals(semanticLink.Links[i + 1].LinkId))
 
