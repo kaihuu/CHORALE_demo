@@ -88,6 +88,15 @@ namespace Mobiquitous2016App.Properties {
         }
         
         /// <summary>
+        ///   #7B1FA2 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string ColorPurple {
+            get {
+                return ResourceManager.GetString("ColorPurple", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   #D32F2F に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string ColorRed {

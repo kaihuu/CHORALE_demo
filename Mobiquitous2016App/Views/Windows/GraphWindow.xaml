@@ -74,28 +74,35 @@
                     <Button Content="CHORALE" Style="{DynamicResource CategoryButtonStyleKey}">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
-                                <l:LivetCallMethodAction MethodName="SwitchToChorale" MethodTarget="{Binding}" />
+                                <l:LivetCallMethodAction MethodName="SwitchToChoralePage" MethodTarget="{Binding}" />
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Button>
                     <Button Content="3D CHORALE" Style="{DynamicResource CategoryButtonStyleKey}">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
-                                <l:LivetCallMethodAction MethodName="SwitchTo3DChorale" MethodTarget="{Binding}" />
+                                <l:LivetCallMethodAction MethodName="SwitchTo3DChoralePage" MethodTarget="{Binding}" />
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Button>
                     <Button Content="ECGs" Style="{DynamicResource CategoryButtonStyleKey}">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
-                                <l:LivetCallMethodAction MethodName="SwitchToEcgs" MethodTarget="{Binding}" />
+                                <l:LivetCallMethodAction MethodName="SwitchToEcgsPage" MethodTarget="{Binding}" />
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Button>
                     <Button Content="3D ECGs" Style="{DynamicResource CategoryButtonStyleKey}">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
-                                <l:LivetCallMethodAction MethodName="SwitchTo3DEcgs" MethodTarget="{Binding}" />
+                                <l:LivetCallMethodAction MethodName="SwitchTo3DEcgsPage" MethodTarget="{Binding}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Button>
+                    <Button Content="Elemental R" Style="{DynamicResource CategoryButtonStyleKey}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <l:LivetCallMethodAction MethodName="SwitchToRPage" MethodTarget="{Binding}" />
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Button>

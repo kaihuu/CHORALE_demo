@@ -43,6 +43,7 @@ namespace Mobiquitous2016App.ViewModels.PageViewModels
         public ChoralePageViewModel(GraphWindowViewModel parentViewModel)
         {
             _parentViewModel = parentViewModel;
+            Initialize();
         }
 
         public void Initialize()

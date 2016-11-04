@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Mobiquitous2016App.Utils;
 
 namespace Mobiquitous2016App.Models.GraphModels
 {
@@ -18,7 +20,29 @@ namespace Mobiquitous2016App.Models.GraphModels
         public double[,] Data { get; set; }
         public IList<SurfaceData> SurfaceDataList { get; set; }
 
-        public void SetData(IList<GraphDatum> list)
+        private ChoraleModel()
+        {
+            
+        }
+
+        public static ChoraleModel Init(IList<GraphDatum> list)
+        {
+            var model = new ChoraleModel
+            {
+                ClassNumber = MathUtil.CalculateClassNumber((IList) list),
+                MinLostEnegry = list.Min(d => d.LostEnergy),
+                MaxLostEnergy = list.Max(d => d.LostEnergy),
+                ClassWidthEnergy = (list.Max(d => d.LostEnergy) - list.Min(d => d.LostEnergy)) / MathUtil.CalculateClassNumber((IList) list),
+                MinTransitTime = list.Min(d => d.TransitTime),
+                MaxTransitTime = list.Max(d => d.TransitTime),
+                ClassWidthTransitTime = (float)(list.Max(d => d.TransitTime) - list.Min(d => d.TransitTime)) / MathUtil.CalculateClassNumber((IList) list)
+            };
+            model.SetData(list);
+
+            return model;
+        }
+
+        private void SetData(IList<GraphDatum> list)
         {
             Data = new double[ClassNumber, ClassNumber];
             SurfaceDataList = new List<SurfaceData>();

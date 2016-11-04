@@ -42,6 +42,7 @@ namespace Mobiquitous2016App.ViewModels.PageViewModels
         public ECGsPageViewModel(GraphWindowViewModel parentViewModel)
         {
             _parentViewModel = parentViewModel;
+            Initialize();
         }
 
         public void Initialize()

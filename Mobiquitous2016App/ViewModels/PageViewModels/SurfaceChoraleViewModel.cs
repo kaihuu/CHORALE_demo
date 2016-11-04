@@ -41,6 +41,7 @@ namespace Mobiquitous2016App.ViewModels.PageViewModels
         public SurfaceChoraleViewModel(GraphWindowViewModel parenViewModel)
         {
             _parentViewModel = parenViewModel;
+            Initialize();
         }
         
         public void Initialize()

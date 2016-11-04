@@ -31,6 +31,7 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
         public TripDirection Direction { get; set; }
         public List<GraphDatum> GraphDataList { get; set; }
         public ChoraleModel ChoraleModel { get; set; }
+        public RModel RModel { get; set; }
 
         #region Title変更通知プロパティ
         private string _Title;
@@ -147,17 +148,8 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
                 .Where(d => d.TransitTime < thirdQuartileTransitTime + 1.5 * iqrTransitTime)
                 .ToList();
 
-            ChoraleModel = new ChoraleModel
-            {
-                ClassNumber = MathUtil.CalculateClassNumber(GraphDataList),
-                MinLostEnegry = GraphDataList.Min(d => d.LostEnergy),
-                MaxLostEnergy = GraphDataList.Max(d => d.LostEnergy),
-                ClassWidthEnergy = (GraphDataList.Max(d => d.LostEnergy) - GraphDataList.Min(d => d.LostEnergy)) / MathUtil.CalculateClassNumber(GraphDataList),
-                MinTransitTime = GraphDataList.Min(d => d.TransitTime),
-                MaxTransitTime = GraphDataList.Max(d => d.TransitTime),
-                ClassWidthTransitTime = (float)(GraphDataList.Max(d => d.TransitTime) - GraphDataList.Min(d => d.TransitTime)) / MathUtil.CalculateClassNumber(GraphDataList)
-            };
-            ChoraleModel.SetData(GraphDataList);
+            ChoraleModel = ChoraleModel.Init(GraphDataList);
+            RModel = RModel.Init(GraphDataList);
         }
 
         public async void Initialize()
@@ -169,14 +161,14 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
 
             await Task.Run(() =>
             {
-                GraphDataList = EcologDao.GetGraphDataOnSemanticLink(SemanticLink, Direction);
-                OutlierExclusion();
+                //GraphDataList = EcologDao.GetGraphDataOnSemanticLink(SemanticLink, Direction);
+                //OutlierExclusion();
             });
 
-            SwitchTo3DEcgs();
+            SwitchToRPage();
         }
 
-        public void SwitchToChorale()
+        public void SwitchToChoralePage()
         {
             Title = "CHORALE";
             BackgroundColor = Resources.ColorBlue;
@@ -185,7 +177,7 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
             CurrentPage = new ChoralePage { DataContext = new ChoralePageViewModel(this) }; ;
         }
 
-        public void SwitchTo3DChorale()
+        public void SwitchTo3DChoralePage()
         {
             Title = "3D CHORALE";
             BackgroundColor = Resources.ColorRed;
@@ -194,7 +186,7 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
             CurrentPage = new SurfaceChoralePage { DataContext = new SurfaceChoraleViewModel(this) };
         }
 
-        public void SwitchToEcgs()
+        public void SwitchToEcgsPage()
         {
             Title = "ECGs";
             BackgroundColor = Resources.ColorYellow;
@@ -203,13 +195,22 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
             CurrentPage = new ECGsPage { DataContext = new ECGsPageViewModel(this) };
         }
 
-        public void SwitchTo3DEcgs()
+        public void SwitchTo3DEcgsPage()
         {
             Title = "3D ECGs";
             BackgroundColor = Resources.ColorGreen;
             TextColor = Resources.ColorWhite;
 
             CurrentPage = new SurfaceECGsPage { DataContext = new SurfaceECGsPageViewModel(this) };
+        }
+
+        public void SwitchToRPage()
+        {
+            Title = "Elemental R";
+            BackgroundColor = Resources.ColorPurple;
+            TextColor = Resources.ColorWhite;
+
+            CurrentPage = new RPage() { DataContext = new RPageViewModel(this) };
         }
     }
 }
