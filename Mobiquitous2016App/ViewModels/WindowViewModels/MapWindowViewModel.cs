@@ -109,7 +109,7 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
                 {
                     InvokeScript("addCircle",
                         semanticLink.Links[i].Latitude,
-                        semanticLink.Links[i].Longitude);#1#
+                        semanticLink.Links[i].Longitude);
 
                     if (semanticLink.Links[i].LinkId.Equals(semanticLink.Links[i + 1].LinkId))
 
