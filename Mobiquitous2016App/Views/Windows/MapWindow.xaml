@@ -33,6 +33,10 @@
 
         <!--  WindowのCloseキャンセル処理に対応する場合は、WindowCloseCancelBehaviorの使用を検討してください  -->
 
+        <l:InteractionMessageTrigger Messenger="{Binding Messenger}">
+            <l:TransitionInteractionMessageAction/>
+        </l:InteractionMessageTrigger>
+
     </i:Interaction.Triggers>
 
     <Grid>
@@ -86,7 +90,7 @@
 
         </StackPanel>
 
-        <materialDesign:Card Grid.Column="1" Margin="5">
+        <materialDesign:Card Grid.Column="1" Margin="0,5,5,5">
 
             <WebBrowser x:Name="WebBrowser"
                         behaviors:WebBrowserBehavior.ObjectForScripting="{Binding MapHost}"

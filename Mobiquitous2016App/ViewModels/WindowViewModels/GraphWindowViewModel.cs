@@ -126,6 +126,8 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
         {
             SemanticLink = semanticLink;
             Direction = direction;
+
+            Initialize();
         }
 
         public void OutlierExclusion()
@@ -161,8 +163,8 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
 
             await Task.Run(() =>
             {
-                //GraphDataList = EcologDao.GetGraphDataOnSemanticLink(SemanticLink, Direction);
-                //OutlierExclusion();
+                GraphDataList = EcologDao.GetGraphDataOnSemanticLink(SemanticLink, Direction);
+                OutlierExclusion();
             });
 
             SwitchToRPage();

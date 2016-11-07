@@ -76,6 +76,7 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
         public void Initialize()
         {
             SemanticLinks = SemanticLinkDao.OutwardSemanticLinks;
+            _direction = new TripDirection { Direction = "outward" };
 
             Uri = $"{AppDomain.CurrentDomain.BaseDirectory}Resources\\index.html";
 
