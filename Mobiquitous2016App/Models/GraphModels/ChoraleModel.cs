@@ -44,18 +44,18 @@ namespace Mobiquitous2016App.Models.GraphModels
 
         private void SetData(IList<GraphDatum> list)
         {
-            Data = new double[ClassNumber, ClassNumber];
+            Data = new double[ClassNumber + 1, ClassNumber + 1];
             SurfaceDataList = new List<SurfaceData>();
 
             double preTimeLevel = 0;
             double currentTimeLevel = MinTransitTime;
 
-            for (int i = 0; i < ClassNumber; i++)
+            for (int i = 0; i < ClassNumber + 1; i++)
             {
                 double preEnergyLevel = 0;
                 double currentEnergyLevel = MinLostEnegry;
 
-                for (int j = 0; j < ClassNumber; j++)
+                for (int j = 0; j < ClassNumber + 1; j++)
                 {
                     // ReSharper disable once ReplaceWithSingleCallToCount
                     Data[i, j] = list

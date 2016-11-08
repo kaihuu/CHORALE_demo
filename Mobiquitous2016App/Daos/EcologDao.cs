@@ -19,6 +19,7 @@ namespace Mobiquitous2016App.Daos
                 connection.Open();
 
                 var query = new StringBuilder();
+
                 query.AppendLine("DECLARE @semantic_link_id INT");
                 query.AppendLine("DECLARE @direction VARCHAR(255)");
                 query.AppendLine("DECLARE @links_count INT");
@@ -30,14 +31,32 @@ namespace Mobiquitous2016App.Daos
                 query.AppendLine("		WHERE semantic_link_id = @semantic_link_id");
                 query.AppendLine("		);");
 
-                query.AppendLine("WITH selected_semantic_links");
+                query.AppendLine("WITH selected_semantic_link");
                 query.AppendLine("AS (");
                 query.AppendLine("	SELECT *");
                 query.AppendLine("	FROM semantic_links");
                 query.AppendLine("	WHERE semantic_link_id = @semantic_link_id");
                 query.AppendLine("	)");
 
-                query.AppendLine("SELECT trip_id AS TripId");
+                query.AppendLine("	,semantic_link_lat_long");
+                query.AppendLine("AS(");
+                query.AppendLine("  SELECT MIN(latitude) AS min_lat");
+                query.AppendLine("		,MIN(longitude) AS min_long");
+                query.AppendLine("		,MAX(latitude) AS max_lat");
+                query.AppendLine("		,MAX(longitude) AS max_long");
+                query.AppendLine("	FROM links INNER JOIN semantic_links ON links.link_id = semantic_links.link_id");
+                query.AppendLine("	WHERE semantic_link_id = @semantic_link_id");
+                query.AppendLine("	)");
+
+                query.AppendLine("	,trip_link_count");
+                query.AppendLine("AS(");
+                query.AppendLine("	SELECT trip_id, COUNT(DISTINCT ecolog.link_id) AS link_count");
+                query.AppendLine("	FROM ecolog");
+                query.AppendLine("		INNER JOIN selected_semantic_link ON ecolog.link_id = selected_semantic_link.link_id");
+                query.AppendLine("	GROUP BY trip_id");
+                query.AppendLine("	)");
+
+                query.AppendLine("SELECT ecolog.trip_id AS TripId");
                 query.AppendLine("	,MIN(jst) AS Date");
                 query.AppendLine("	,COUNT(*) AS TransitTime");
                 query.AppendLine("	,SUM(consumed_electric_energy) AS ConsumedElectricEnergy");
@@ -46,20 +65,26 @@ namespace Mobiquitous2016App.Daos
                 query.AppendLine("	,SUM(ABS(convert_loss)) AS convert_loss");
                 query.AppendLine("	,SUM(energy_by_rolling_resistance) AS RollingResistance");
                 query.AppendLine("	,SUM(energy_by_air_resistance) AS AirResistance");
-                query.AppendLine("FROM ecolog");
-                query.AppendLine("INNER JOIN selected_semantic_links");
-                query.AppendLine($"  ON ecolog.link_id = selected_semantic_links.link_id");
+                query.AppendLine("FROM ecolog, semantic_link_lat_long, trip_link_count");
 
                 query.AppendLine("WHERE ecolog.driver_id = 1");
                 query.AppendLine("  AND (ecolog.car_id = 1 OR ecolog.car_id = 3)");
                 query.AppendLine("  AND ecolog.sensor_id = 12");
-                query.AppendLine("	AND trip_direction = @direction");
+                query.AppendLine("	AND trip_direction = @Direction");
+                //query.AppendLine("  AND JST < '2014-06-16 00:00:00'");
+                query.AppendLine("  AND jst > '2013-10-30 00:00:00'");
+                query.AppendLine("  AND latitude <= semantic_link_lat_long.max_lat + 0.0001");
+                query.AppendLine("  AND LATITUDE >= semantic_link_lat_long.min_lat - 0.0001");
+                query.AppendLine("	AND LONGITUDE <= semantic_link_lat_long.max_long");
+                query.AppendLine("	AND LONGITUDE >= semantic_link_lat_long.min_long");
+                query.AppendLine("	AND ecolog.trip_id = trip_link_count.trip_id");
+                query.AppendLine("	AND trip_link_count.link_count > (@links_count * 0.8)");
 
-                query.AppendLine("GROUP BY trip_id");
-                query.AppendLine("HAVING COUNT(DISTINCT ecolog.link_id) > (@links_count * 0.75)");
-                query.AppendLine("ORDER BY trip_id");
+                query.AppendLine("GROUP BY ecolog.trip_id");
 
                 var list = connection.Query<GraphDatum>(query.ToString()).ToList();
+
+                Console.WriteLine("List count: " + list.Count);
                 
                 return list;
             }

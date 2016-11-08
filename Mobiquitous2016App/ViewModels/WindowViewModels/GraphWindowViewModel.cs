@@ -137,14 +137,14 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
             var thirdQuartileEnergy = quartilesEnergy.Item3;
             var iqrEnergy = thirdQuartileEnergy - firstQuartileEnergy;
 
-            GraphDataList = GraphDataList.Where(d => d.LostEnergy > firstQuartileEnergy - 1.5 * iqrEnergy)
-                .Where(d => d.LostEnergy < thirdQuartileEnergy + 1.5 * iqrEnergy)
-                .ToList();
-
             var quartilesTransitTime = MathUtil.Quartiles(GraphDataList.OrderBy(d => d.TransitTime).Select(d => (double)d.TransitTime).ToArray());
             var firstQuartileTransitTime = quartilesTransitTime.Item1;
             var thirdQuartileTransitTime = quartilesTransitTime.Item3;
-            var iqrTransitTime = thirdQuartileTransitTime - thirdQuartileTransitTime;
+            var iqrTransitTime = thirdQuartileTransitTime - firstQuartileTransitTime;
+
+            GraphDataList = GraphDataList.Where(d => d.LostEnergy > firstQuartileEnergy - 1.5 * iqrEnergy)
+                .Where(d => d.LostEnergy < thirdQuartileEnergy + 1.5 * iqrEnergy)
+                .ToList();
 
             GraphDataList = GraphDataList.Where(d => d.TransitTime > firstQuartileTransitTime - 1.5 * iqrTransitTime)
                 .Where(d => d.TransitTime < thirdQuartileTransitTime + 1.5 * iqrTransitTime)
