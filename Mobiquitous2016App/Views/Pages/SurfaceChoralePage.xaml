@@ -1,13 +1,13 @@
 ﻿<Page x:Class="Mobiquitous2016App.Views.Pages.SurfaceChoralePage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:chart="http://schemas.syncfusion.com/wpf"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:chart="http://schemas.syncfusion.com/wpf"
-      Background="{DynamicResource MaterialDesignPaper}"
-      FontFamily="{StaticResource MaterialDesignFont}"
       d:DesignHeight="300"
       d:DesignWidth="300"
+      Background="{DynamicResource MaterialDesignPaper}"
+      FontFamily="{StaticResource MaterialDesignFont}"
       mc:Ignorable="d">
 
     <Grid>
@@ -73,20 +73,19 @@
 
             <chart:SfSurfaceChart.XAxis>
 
-                <chart:SurfaceAxis Header="Transit Time[s]"
-                                   LabelFormat="0" />
+                <chart:SurfaceAxis Header="Transit time[s]" LabelFormat="0" />
 
             </chart:SfSurfaceChart.XAxis>
 
             <chart:SfSurfaceChart.YAxis>
 
-                <chart:SurfaceAxis Header="Trips Count" LabelFormat="0" />
+                <chart:SurfaceAxis Header="Trips count" LabelFormat="0" />
 
             </chart:SfSurfaceChart.YAxis>
 
             <chart:SfSurfaceChart.ZAxis>
 
-                <chart:SurfaceAxis Header="Lost Energy[kWh]" LabelFormat="0.00" />
+                <chart:SurfaceAxis Header="Lost energy[kWh]" LabelFormat="0.00" />
 
             </chart:SfSurfaceChart.ZAxis>
         </chart:SfSurfaceChart>
