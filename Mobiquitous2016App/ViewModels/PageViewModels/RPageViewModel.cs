@@ -97,9 +97,6 @@ namespace Mobiquitous2016App.ViewModels.PageViewModels
 
         public void Initialize()
         {
-            Console.WriteLine($"Convert: {_pareViewModel.RModel.ROfRegeneLoss[0].RForLostEnergy}");
-            Console.WriteLine($"Convert: {_pareViewModel.RModel.ROfRegeneLoss[0].RForTransitTime}");
-
             ROfConvertLoss = _pareViewModel.RModel.ROfConvertLoss;
             ROfAirResistance = _pareViewModel.RModel.ROfAirResistance;
             ROfRollingResistance = _pareViewModel.RModel.ROfRollingResistace;
