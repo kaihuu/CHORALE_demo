@@ -50,7 +50,7 @@ namespace Mobiquitous2016App.ViewModels.PageViewModels
         {
             var plotModel = new PlotModel
             {
-                Subtitle = $"Semanantic Link: {_parentViewModel.SemanticLink.Semantics}, Direction: {_parentViewModel.Direction.Direction}"
+                Subtitle = $"Semanantic Link: {_parentViewModel.SemanticLink.SemanticLinkId}, Direction: {_parentViewModel.Direction.Direction}"
             };
 
             var colorAxis = new LinearColorAxis
