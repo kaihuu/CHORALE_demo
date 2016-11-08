@@ -149,9 +149,6 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
             GraphDataList = GraphDataList.Where(d => d.TransitTime > firstQuartileTransitTime - 1.5 * iqrTransitTime)
                 .Where(d => d.TransitTime < thirdQuartileTransitTime + 1.5 * iqrTransitTime)
                 .ToList();
-
-            ChoraleModel = ChoraleModel.Init(GraphDataList);
-            RModel = RModel.Init(GraphDataList);
         }
 
         public async void Initialize()
@@ -165,6 +162,8 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
             {
                 GraphDataList = EcologDao.GetGraphDataOnSemanticLink(SemanticLink, Direction);
                 OutlierExclusion();
+                ChoraleModel = ChoraleModel.Init(GraphDataList);
+                RModel = RModel.Init(GraphDataList);
             });
 
             SwitchToRPage();

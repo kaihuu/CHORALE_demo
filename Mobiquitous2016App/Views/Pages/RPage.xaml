@@ -46,26 +46,26 @@
             <chart:ScatterSeries Label="Convert loss"
                                  Interior="Red"
                                  ItemsSource="{Binding ROfConvertLoss}" 
-                                 XBindingPath="RForLostEnergy" 
-                                 YBindingPath="RForTransitTime"/>
+                                 XBindingPath="RForTransitTime" 
+                                 YBindingPath="RForLostEnergy"/>
 
             <chart:ScatterSeries Label="Air resistance"
                                  Interior="Yellow"
                                  ItemsSource="{Binding ROfAirResistance}" 
-                                 XBindingPath="RForLostEnergy" 
-                                 YBindingPath="RForTransitTime" />
+                                 XBindingPath="RForTransitTime" 
+                                 YBindingPath="RForLostEnergy" />
 
             <chart:ScatterSeries Label="Rolling resistance"
                                  Interior="Orange"
                                  ItemsSource="{Binding ROfRollingResistance}" 
-                                 XBindingPath="RForLostEnergy" 
-                                 YBindingPath="RForTransitTime" />
+                                 XBindingPath="RForTransitTime" 
+                                 YBindingPath="RForLostEnergy" />
 
             <chart:ScatterSeries Label="Regene loss"
                                  Interior="DeepPink"
                                  ItemsSource="{Binding ROfRegeneLoss}" 
-                                 XBindingPath="RForLostEnergy" 
-                                 YBindingPath="RForTransitTime" />
+                                 XBindingPath="RForTransitTime" 
+                                 YBindingPath="RForLostEnergy" />
             
         </chart:SfChart>
     </Grid>

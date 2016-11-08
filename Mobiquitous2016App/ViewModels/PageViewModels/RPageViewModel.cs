@@ -19,7 +19,7 @@ namespace Mobiquitous2016App.ViewModels.PageViewModels
 {
     public class RPageViewModel : ViewModel
     {
-        public readonly GraphWindowViewModel _pareViewModel;
+        private readonly GraphWindowViewModel _pareViewModel;
 
         #region ROfConvertLoss変更通知プロパティ
         private IList<RModel.R> _ROfConvertLoss;
@@ -97,6 +97,9 @@ namespace Mobiquitous2016App.ViewModels.PageViewModels
 
         public void Initialize()
         {
+            Console.WriteLine($"Convert: {_pareViewModel.RModel.ROfRegeneLoss[0].RForLostEnergy}");
+            Console.WriteLine($"Convert: {_pareViewModel.RModel.ROfRegeneLoss[0].RForTransitTime}");
+
             ROfConvertLoss = _pareViewModel.RModel.ROfConvertLoss;
             ROfAirResistance = _pareViewModel.RModel.ROfAirResistance;
             ROfRollingResistance = _pareViewModel.RModel.ROfRollingResistace;

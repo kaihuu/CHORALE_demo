@@ -62,7 +62,7 @@ namespace Mobiquitous2016App.Daos
                 query.AppendLine("	,SUM(consumed_electric_energy) AS ConsumedElectricEnergy");
                 query.AppendLine("	,SUM(lost_energy) AS LostEnergy");
                 query.AppendLine("	,SUM(ABS(regene_loss)) AS RegeneLoss");
-                query.AppendLine("	,SUM(ABS(convert_loss)) AS convert_loss");
+                query.AppendLine("	,SUM(ABS(convert_loss)) AS ConvertLoss");
                 query.AppendLine("	,SUM(energy_by_rolling_resistance) AS RollingResistance");
                 query.AppendLine("	,SUM(energy_by_air_resistance) AS AirResistance");
                 query.AppendLine("FROM ecolog, semantic_link_lat_long, trip_link_count");
