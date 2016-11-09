@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
+using Dapper;
 using Dapper.FluentMap;
 using Livet;
 using Livet.Messaging;
@@ -108,7 +109,12 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
         public void SetChorale()
         {
             InvokeScript("removeAllImageMarker", null);
-            InvokeScript("addImageMarker", $"{AppDomain.CurrentDomain.BaseDirectory}Resources\\1.png", 35.473695, 139.590859);
+            SemanticLinks.AsList().ForEach(s =>
+            {
+                InvokeScript("addImageMarker", $"{AppDomain.CurrentDomain.BaseDirectory}Resources\\{s.SemanticLinkId}.jpg"
+                    ,s.Links.Average(l => l.Latitude)
+                    ,s.Links.Average(l => l.Longitude));
+            });
         }
 
         // ReSharper disable once InconsistentNaming

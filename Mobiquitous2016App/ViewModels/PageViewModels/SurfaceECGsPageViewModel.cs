@@ -15,6 +15,7 @@ using Livet.Messaging.Windows;
 using Mobiquitous2016App.Models;
 using Mobiquitous2016App.Models.GraphModels;
 using Mobiquitous2016App.ViewModels.WindowViewModels;
+using Syncfusion.UI.Xaml.Charts;
 
 namespace Mobiquitous2016App.ViewModels.PageViewModels
 {
@@ -40,6 +41,23 @@ namespace Mobiquitous2016App.ViewModels.PageViewModels
         }
         #endregion
 
+        #region Maximum変更通知プロパティ
+        private double _Maximum;
+
+        public double Maximum
+        {
+            get
+            { return _Maximum; }
+            set
+            {
+                if (_Maximum == value)
+                    return;
+                _Maximum = value;
+                RaisePropertyChanged();
+            }
+        }
+        #endregion
+
         public SurfaceECGsPageViewModel(GraphWindowViewModel parentViewModel)
         {
             _parentViewModel = parentViewModel;
@@ -49,6 +67,13 @@ namespace Mobiquitous2016App.ViewModels.PageViewModels
         public void Initialize()
         {
             GraphData = _parentViewModel.GraphDataList;
+            Maximum = new double[]
+            {
+                _parentViewModel.GraphDataList.Max(v => v.ConvertLoss),
+                _parentViewModel.GraphDataList.Max(v => v.AirResistance),
+                _parentViewModel.GraphDataList.Max(v => v.RollingResistance),
+                _parentViewModel.GraphDataList.Max(v => v.RegeneLoss)
+            }.Max();
         }
     }
 }

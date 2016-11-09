@@ -161,8 +161,12 @@ function addImageMarker(imagePath, latitude, longitude) {
     var imageMarker = new google.maps.Marker({
         position: new google.maps.LatLng(latitude, longitude),
         map: map,
+        animation: google.maps.Animation.DROP,
         draggable: true,
-        icon: imagePath
+        icon: {
+            url: imagePath,
+            scaledSize: new google.maps.Size(240, 150)
+        }
     });
 
     imageMarkers.push(imageMarker);

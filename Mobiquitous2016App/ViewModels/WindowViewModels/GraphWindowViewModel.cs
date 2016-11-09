@@ -166,7 +166,7 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
                 RModel = RModel.Init(GraphDataList);
             });
 
-            SwitchToRPage();
+            SwitchToChoralePage();
         }
 
         public void SwitchToChoralePage()
