@@ -39,4 +39,5 @@
                       Model="{Binding PlotModelRegeneLoss}" />
 
     </Grid>
+    
 </Page>

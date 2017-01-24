@@ -42,6 +42,51 @@ function initialize() {
     });
 }
 
+function getRandomColor(number) {
+
+    switch (number % 19) {
+        case 0:
+            return "#E60012";
+        case 1:
+            return "#8FC31F";
+        case 2:
+            return "#00A0E9";
+        case 3:
+            return "#920783";
+        case 4:
+            return "#EB6100";
+        case 5:
+            return "#22AC38";
+        case 6:
+            return "#0086D1";
+        case 7:
+            return "#BE0081";
+        case 8:
+            return "#F39800";
+        case 9:
+            return "#009944";
+        case 10:
+            return "#0068B7";
+        case 11:
+            return "#E4007F";
+        case 12:
+            return "#FCC800";
+        case 13:
+            return "#009B6B";
+        case 14:
+            return "#00479D";
+        case 15:
+            return "#E5006A";
+        case 16:
+            return "#FFF100";
+        case 17:
+            return "#009E96";
+        case 18:
+            return "#1D2088";
+    }
+
+}
+
 function getColor(number) {
 
     switch (number) {
@@ -86,7 +131,7 @@ function addLine(semanticLinkID, latitude1, longitude1, latitude2, longitude2) {
     var polyLineOptions = {
         path: mapPoints,
         strokeWeight: 5,
-        strokeColor: getColor(semanticLinkID),
+        strokeColor: getRandomColor(semanticLinkID),
         strokeOpacity: "1.0"
     };
 

@@ -18,7 +18,7 @@ namespace Mobiquitous2016App.Daos
                 DataSource = "ECOLOGDB",
                 InitialCatalog = "ECOLOGDBver2",
                 IntegratedSecurity = true,
-                ConnectTimeout = 15
+                ConnectTimeout = 180
             };
 
             return builder.ToString();

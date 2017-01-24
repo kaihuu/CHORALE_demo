@@ -87,8 +87,20 @@
       <HintPath>..\packages\ReactiveProperty.3.2.0\lib\net45\ReactiveProperty.NET45.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Syncfusion.Chart.Wpf, Version=14.4450.0.15, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Chart.WPF45.14.4.0.15\lib\net45\Syncfusion.Chart.Wpf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Core, Version=13.1450.0.21, Culture=neutral, PublicKeyToken=632609b4d040f6b4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Core45.13.1.0.21\lib\net45\Syncfusion.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Syncfusion.SfChart.WPF, Version=14.3450.0.49, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <HintPath>..\packages\Syncfusion.SfChart.WPF45.14.3.0.49\lib\net45\Syncfusion.SfChart.WPF.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Shared.Wpf, Version=14.4450.0.15, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Shared.WPF45.14.4.0.15\lib\net45\Syncfusion.Shared.Wpf.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -160,7 +172,7 @@
     <Compile Include="ViewModels\PageViewModels\RPageViewModel.cs" />
     <Compile Include="ViewModels\PageViewModels\SurfaceChoraleViewModel.cs" />
     <Compile Include="ViewModels\PageViewModels\ChoralePageViewModel.cs" />
-    <Compile Include="ViewModels\PageViewModels\SurfaceECGsPageViewModel.cs" />
+    <Compile Include="ViewModels\PageViewModels\RecentECGsPageViewModel.cs" />
     <Compile Include="ViewModels\WindowViewModels\MapWindowViewModel.cs" />
     <Compile Include="Views\Pages\ChoralePage.xaml.cs">
       <DependentUpon>ChoralePage.xaml</DependentUpon>
@@ -174,8 +186,8 @@
     <Compile Include="Views\Pages\SurfaceChoralePage.xaml.cs">
       <DependentUpon>SurfaceChoralePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Pages\SurfaceECGsPage.xaml.cs">
-      <DependentUpon>SurfaceECGsPage.xaml</DependentUpon>
+    <Compile Include="Views\Pages\RecentECGsPage.xaml.cs">
+      <DependentUpon>RecentECGsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Windows\MapWindow.xaml.cs">
       <DependentUpon>MapWindow.xaml</DependentUpon>
@@ -196,7 +208,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Pages\SurfaceECGsPage.xaml">
+    <Page Include="Views\Pages\RecentECGsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

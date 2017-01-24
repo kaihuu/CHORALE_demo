@@ -30,6 +30,7 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
         public SemanticLink SemanticLink { get; set; }
         public TripDirection Direction { get; set; }
         public List<GraphDatum> GraphDataList { get; set; }
+        public List<GraphDatum> RecentGraphDataList { get; set; }
         public ChoraleModel ChoraleModel { get; set; }
         public RModel RModel { get; set; }
 
@@ -161,6 +162,7 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
             await Task.Run(() =>
             {
                 GraphDataList = EcologDao.GetGraphDataOnSemanticLink(SemanticLink, Direction);
+                RecentGraphDataList = EcologDao.GetRecentGraphDataOnSemanticLink(SemanticLink, Direction);
                 OutlierExclusion();
                 ChoraleModel = ChoraleModel.Init(GraphDataList);
                 RModel = RModel.Init(GraphDataList);
@@ -196,13 +198,13 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
             CurrentPage = new ECGsPage { DataContext = new ECGsPageViewModel(this) };
         }
 
-        public void SwitchTo3DEcgsPage()
+        public void SwitchToRecentEcgsPage()
         {
-            Title = "3D ECGs";
+            Title = "Recent ECGs";
             BackgroundColor = Resources.ColorGreen;
             TextColor = Resources.ColorWhite;
 
-            CurrentPage = new SurfaceECGsPage { DataContext = new SurfaceECGsPageViewModel(this) };
+            CurrentPage = new RecentECGsPage() { DataContext = new RecentECGsPageViewModel(this) };
         }
 
         public void SwitchToRPage()
