@@ -12,6 +12,7 @@ using Mobiquitous2016App.Models.MapModels;
 using Mobiquitous2016App.ObjectRelationalMaps;
 using Mobiquitous2016App.ORMaps;
 using Mobiquitous2016App.Views.Windows;
+using Mobiquitous2016App.Utils;
 
 namespace Mobiquitous2016App.ViewModels.WindowViewModels
 {
@@ -76,6 +77,9 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
 
         public void Initialize()
         {
+            Regkey reg = new Regkey();
+            reg.changeRegkey();
+
             SemanticLinks = SemanticLinkDao.OutwardSemanticLinks;
             _direction = new TripDirection { Direction = "outward" };
 
