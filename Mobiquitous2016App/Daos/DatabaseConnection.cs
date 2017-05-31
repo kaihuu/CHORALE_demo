@@ -15,7 +15,7 @@ namespace Mobiquitous2016App.Daos
         {
             var builder = new SqlConnectionStringBuilder()
             {
-                DataSource = "ECOLOGDB",
+                DataSource = "ECOLOGDB2016",
                 InitialCatalog = "ECOLOGDBver2",
                 IntegratedSecurity = true,
                 ConnectTimeout = 180
