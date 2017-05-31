@@ -6,7 +6,7 @@
         xmlns:l="http://schemas.livet-mvvm.net/2011/wpf"
         xmlns:windowViewModels="clr-namespace:Mobiquitous2016App.ViewModels.WindowViewModels"
         xmlns:System="clr-namespace:System;assembly=mscorlib" xmlns:EcologModels="clr-namespace:Mobiquitous2016App.Models.EcologModels" x:Class="Mobiquitous2016App.Views.Windows.Window1"
-        Title="Window1" Height="350" Width="525">
+        Title="SelectWindow" Height="350" Width="525">
 
     <Window.DataContext>
         <windowViewModels:SelectWindowViewModel/>
@@ -33,14 +33,14 @@
     </i:Interaction.Triggers>
 
     <Grid>
-        <ComboBox HorizontalAlignment="Left" Margin="53,127,0,0" VerticalAlignment="Top" Width="407" Height="35" SelectionChanged="ComboBox_SelectionChanged" FontSize="20"/>
+        <ComboBox HorizontalAlignment="Left" Margin="185,138,0,0" VerticalAlignment="Top" Width="157" Height="39" SelectionChanged="ComboBox_SelectionChanged" FontSize="20" ItemsSource="{Binding SemanticLinks}" DisplayMemberPath="SemanticLinkId" SelectedIndex="0"/>
         <Button Content="View" HorizontalAlignment="Left" Margin="211,206,0,0" VerticalAlignment="Top" Width="75"/>
-        <ComboBox HorizontalAlignment="Left" Height="38" Margin="185,47,0,0" VerticalAlignment="Top" Width="173" SelectedIndex="0" FontSize="20">
-            <System:String>Homeward</System:String>
-            <System:String>Outward</System:String>
+        <ComboBox HorizontalAlignment="Left" Height="38" Margin="185,47,0,0" VerticalAlignment="Top" Width="173" SelectedIndex="0" FontSize="20" SelectedValue="{Binding DirectionSelect}">
+            <System:String>homeward</System:String>
+            <System:String>outward</System:String>
         </ComboBox>
         <Label Content="Direction" HorizontalAlignment="Left" Height="36" Margin="185,11,0,0" VerticalAlignment="Top" Width="147" FontSize="20"/>
-        <Label Content="SemanticLink" HorizontalAlignment="Left" Height="36" Margin="53,91,0,0" VerticalAlignment="Top" Width="147" FontSize="20"/>
+        <Label Content="SemanticLink" HorizontalAlignment="Left" Height="36" Margin="185,97,0,0" VerticalAlignment="Top" Width="147" FontSize="20"/>
 
     </Grid>
 </Window>

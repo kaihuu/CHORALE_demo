@@ -15,7 +15,7 @@ using Mobiquitous2016App.Models;
 using Mobiquitous2016App.Models.EcologModels;
 using Mobiquitous2016App.Utils;
 using Mobiquitous2016App.Daos;
-
+using System.Collections.ObjectModel;
 
 namespace Mobiquitous2016App.ViewModels.WindowViewModels
 {
@@ -58,25 +58,54 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
         }
         #endregion
 
+        #region DirectionSelect変更通知プロパティ
+        private string _DirectionSelect;
+
+        public string DirectionSelect
+        {
+            get
+            { return _DirectionSelect; }
+            set
+            { 
+                if (_DirectionSelect == value)
+                    return;
+                _DirectionSelect = value;
+                RaisePropertyChanged("DirectionSelect");
+            }
+        }
+        #endregion
+
+
 
         public void Initialize()
         {
+            
             Regkey reg = new Regkey();
             reg.changeRegkey();
-            
-            if()
+
+            if (DirectionSelect == "homeward")
+            {
+                SetHomewardSemanticLinks();
+            }
+            else if(DirectionSelect == "outward")
+            {
+                SetOutwardSemanticLinks();
+            }
+
+
+
         }
 
         public void SetOutwardSemanticLinks()
         {
-            _direction = new TripDirection { Direction = "outward" };
+            //_direction = new TripDirection { Direction = "outward" };
             SemanticLinks = SemanticLinkDao.OutwardSemanticLinks;
             //InvokeScript("initialize", null);
         }
 
         public void SetHomewardSemanticLinks()
         {
-            _direction = new TripDirection { Direction = "homeward" };
+            //_direction = new TripDirection { Direction = "homeward" };
             SemanticLinks = SemanticLinkDao.HomewardSemanticLinks;
             //InvokeScript("initialize", null);
         }
