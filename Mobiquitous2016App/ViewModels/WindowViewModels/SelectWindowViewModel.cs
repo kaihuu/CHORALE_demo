@@ -109,5 +109,9 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
             SemanticLinks = SemanticLinkDao.HomewardSemanticLinks;
             //InvokeScript("initialize", null);
         }
+        public void ViewGraph()
+        {
+            
+        }
     }
 }
