@@ -154,9 +154,9 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
 
         public async void Initialize()
         {
-            var SemanticLinks = SemanticLinkDao.OutwardSemanticLinks;
-            Direction = new TripDirection { Direction = "outward" };
-            SemanticLink = SemanticLinks.FirstOrDefault(s => s.SemanticLinkId == 13);
+            //var SemanticLinks = SemanticLinkDao.OutwardSemanticLinks;
+            //Direction = new TripDirection { Direction = "outward" };
+            //SemanticLink = SemanticLinks.FirstOrDefault(s => s.SemanticLinkId == 13);
             Title = "CHORALE";
             BackgroundColor = Resources.ColorBlue;
             TextColor = Resources.ColorWhite;

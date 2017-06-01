@@ -24,6 +24,23 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
     public class SelectWindowViewModel : ViewModel
     {
 
+        #region SelectedDirection変更通知プロパティ
+        private int _SelectedDirection;
+
+        public int SelectedDirection
+        {
+            get
+            { return _SelectedDirection; }
+            set
+            { 
+                if (_SelectedDirection == value)
+                    return;
+                _SelectedDirection = value;
+                RaisePropertyChanged("SelectedDirection");
+            }
+        }
+        #endregion
+
 
         #region SemanticLinks変更通知プロパティ
         private IList<SemanticLink> _SemanticLinks;
@@ -56,6 +73,8 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
                     return;
                 _direction = value;
                 RaisePropertyChanged("direction");
+
+                
             }
         }
         #endregion
@@ -73,6 +92,8 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
                     return;
                 _DirectionSelect = value;
                 RaisePropertyChanged("DirectionSelect");
+
+                Initialize();
             }
         }
         #endregion
@@ -93,6 +114,8 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
                 RaisePropertyChanged("SelectedItem");
             }
         }
+
+        public object Authorizer { get; private set; }
         #endregion
 
 
@@ -110,7 +133,7 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
             {
                 SetOutwardSemanticLinks();
             }
-
+            
 
 
         }
@@ -131,6 +154,8 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
         public void ViewGraph()
         {
 
+            var message = new TransitionMessage(typeof(GraphWindow), new GraphWindowViewModel(SelectedItem, direction), TransitionMode.Modal);
+            Messenger.Raise(message);
         }
 
 
