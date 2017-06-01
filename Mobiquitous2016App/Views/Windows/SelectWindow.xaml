@@ -33,7 +33,7 @@
     </i:Interaction.Triggers>
 
     <Grid>
-        <ComboBox HorizontalAlignment="Left" Margin="36,138,0,0" VerticalAlignment="Top" Width="447" Height="39" SelectionChanged="ComboBox_SelectionChanged" FontSize="20" ItemsSource="{Binding SemanticLinks}" DisplayMemberPath="Semantics" SelectedIndex="0"/>
+        <ComboBox HorizontalAlignment="Left" Margin="36,138,0,0" VerticalAlignment="Top" Width="447" Height="39" SelectionChanged="ComboBox_SelectionChanged" FontSize="20" ItemsSource="{Binding SemanticLinks}" DisplayMemberPath="Semantics" SelectedIndex="0" SelectedItem="{Binding SelectedItem}"/>
         <Button Content="View" HorizontalAlignment="Left" Margin="211,206,0,0" VerticalAlignment="Top" Width="75"
                 >
             <i:Interaction.Triggers>

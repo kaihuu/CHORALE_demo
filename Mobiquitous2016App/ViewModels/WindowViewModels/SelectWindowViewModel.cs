@@ -16,6 +16,8 @@ using Mobiquitous2016App.Models.EcologModels;
 using Mobiquitous2016App.Utils;
 using Mobiquitous2016App.Daos;
 using System.Collections.ObjectModel;
+using Mobiquitous2016App.Views.Windows;
+using System.Threading.Tasks;
 
 namespace Mobiquitous2016App.ViewModels.WindowViewModels
 {
@@ -31,7 +33,7 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
             get
             { return _SemanticLinks; }
             set
-            { 
+            {
                 if (_SemanticLinks == value)
                     return;
                 _SemanticLinks = value;
@@ -49,7 +51,7 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
             get
             { return _direction; }
             set
-            { 
+            {
                 if (_direction == value)
                     return;
                 _direction = value;
@@ -66,7 +68,7 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
             get
             { return _DirectionSelect; }
             set
-            { 
+            {
                 if (_DirectionSelect == value)
                     return;
                 _DirectionSelect = value;
@@ -76,10 +78,27 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
         #endregion
 
 
+        #region SelectedItem変更通知プロパティ
+        private SemanticLink _SelectedItem;
+
+        public SemanticLink SelectedItem
+        {
+            get
+            { return _SelectedItem; }
+            set
+            {
+                if (_SelectedItem == value)
+                    return;
+                _SelectedItem = value;
+                RaisePropertyChanged("SelectedItem");
+            }
+        }
+        #endregion
+
 
         public void Initialize()
         {
-            
+
             Regkey reg = new Regkey();
             reg.changeRegkey();
 
@@ -87,7 +106,7 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
             {
                 SetHomewardSemanticLinks();
             }
-            else if(DirectionSelect == "outward")
+            else if (DirectionSelect == "outward")
             {
                 SetOutwardSemanticLinks();
             }
@@ -98,20 +117,23 @@ namespace Mobiquitous2016App.ViewModels.WindowViewModels
 
         public void SetOutwardSemanticLinks()
         {
-            //_direction = new TripDirection { Direction = "outward" };
+            _direction = new TripDirection { Direction = "outward" };
             SemanticLinks = SemanticLinkDao.OutwardSemanticLinks;
             //InvokeScript("initialize", null);
         }
 
         public void SetHomewardSemanticLinks()
         {
-            //_direction = new TripDirection { Direction = "homeward" };
+            _direction = new TripDirection { Direction = "homeward" };
             SemanticLinks = SemanticLinkDao.HomewardSemanticLinks;
             //InvokeScript("initialize", null);
         }
         public void ViewGraph()
         {
-            
+
         }
+
+
+
     }
 }
