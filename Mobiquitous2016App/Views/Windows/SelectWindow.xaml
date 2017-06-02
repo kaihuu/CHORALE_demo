@@ -29,9 +29,7 @@
         </i:EventTrigger>
 
         <!--WindowのCloseキャンセル処理に対応する場合は、WindowCloseCancelBehaviorの使用を検討してください-->
-        <l:InteractionMessageTrigger Messenger="{Binding Messenger}">
-            <l:TransitionInteractionMessageAction/>
-        </l:InteractionMessageTrigger>
+
     </i:Interaction.Triggers>
 
     <Grid>
@@ -44,7 +42,7 @@
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </Button>
-        <ComboBox HorizontalAlignment="Left" Height="38" Margin="185,47,0,0" VerticalAlignment="Top" Width="173" SelectedIndex="{Binding SelectedDirection}" FontSize="20" SelectedValue="{Binding DirectionSelect}">
+        <ComboBox HorizontalAlignment="Left" Height="38" Margin="185,47,0,0" VerticalAlignment="Top" Width="173" SelectedIndex="0" FontSize="20" SelectedValue="{Binding DirectionSelect}">
             <System:String>homeward</System:String>
             <System:String>outward</System:String>
         </ComboBox>
