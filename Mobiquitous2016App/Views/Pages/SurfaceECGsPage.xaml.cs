@@ -12,8 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Mobiquitous2016App.Models.GraphModels;
-using Syncfusion.Windows.Chart;
 
 namespace Mobiquitous2016App.Views.Pages
 {
@@ -21,9 +19,9 @@ namespace Mobiquitous2016App.Views.Pages
     /// SurfaceECGsPage.xaml の相互作用ロジック
     /// </summary>
     // ReSharper disable once InconsistentNaming
-    public partial class RecentECGsPage : Page
+    public partial class SurfaceECGsPage : Page
     {
-        public RecentECGsPage()
+        public SurfaceECGsPage()
         {
             InitializeComponent();
         }
