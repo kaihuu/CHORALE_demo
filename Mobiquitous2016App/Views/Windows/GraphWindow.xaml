@@ -92,10 +92,10 @@
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Button>
-                    <Button Content="3D ECGs" Style="{DynamicResource CategoryButtonStyleKey}">
+                    <Button Content="Recent ECGs" Style="{DynamicResource CategoryButtonStyleKey}">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
-                                <l:LivetCallMethodAction MethodName="SwitchTo3DEcgsPage" MethodTarget="{Binding}" />
+                                <l:LivetCallMethodAction MethodName="SwitchToRecentEcgsPage" MethodTarget="{Binding}" />
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </Button>

@@ -17,5 +17,6 @@ namespace Mobiquitous2016App.Models.GraphModels
         public float RollingResistance { get; set; }
         public float RegeneLoss { get; set; }
         public int TransitTime { get; set; }
+        public int Zero => 0;
     }
 }
